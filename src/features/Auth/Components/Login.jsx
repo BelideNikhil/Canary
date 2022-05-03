@@ -30,6 +30,7 @@ export default function Login() {
                     <label className="text-left text-xs	text-slate-500 dark:text-slate-300">Username</label>
                     <input
                         type="text"
+                        required
                         value={userData.username}
                         onChange={(e) => setUserData((prev) => ({ ...prev, username: e.target.value }))}
                         className="focus:outline-none text-sm pt-0.5 bg-slate-100 dark:bg-slate-800 dark:text-slate-100"
@@ -39,6 +40,7 @@ export default function Login() {
                     <div className="flex flex-col flex-1">
                         <label className="text-left text-xs text-slate-500 dark:text-slate-300">Password</label>
                         <input
+                            required
                             value={userData.password}
                             type={togglePassword ? "text" : "password"}
                             onChange={(e) => setUserData((prev) => ({ ...prev, password: e.target.value }))}

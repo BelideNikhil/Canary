@@ -45,6 +45,7 @@ const extraReducers = {
         state.isLoading = false;
         state.token = payload.encodedToken;
         state.userDetails = payload.foundUser;
+        state.error = "";
     },
     [userLogin.pending]: (state) => {
         state.isLoading = true;
@@ -58,6 +59,7 @@ const extraReducers = {
         state.isLoading = false;
         state.token = payload.encodedToken;
         state.userDetails = payload.createdUser;
+        state.error = "";
     },
     [userSignup.pending]: (state) => {
         state.isLoading = true;

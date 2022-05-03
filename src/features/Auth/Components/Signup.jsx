@@ -161,6 +161,7 @@ export default function Signup() {
                     <div className="flex items-center mb-0.5">
                         <input
                             type="checkbox"
+                            className="accent-primary-color"
                             checked={userData.agreeTo}
                             onChange={(e) => setUserData((prev) => ({ ...prev, agreeTo: e.target.checked }))}
                         />
