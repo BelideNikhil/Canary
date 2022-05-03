@@ -3,6 +3,10 @@ module.exports = {
     darkMode: "class",
     theme: {
         extend: {},
+        fontFamily: {
+            montserrat: ["Montserrat", "sans-serif"],
+        },
     },
+
     plugins: [],
 };
