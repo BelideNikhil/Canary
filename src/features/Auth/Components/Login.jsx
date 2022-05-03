@@ -21,7 +21,7 @@ export default function Login() {
         }
     }
     return (
-        <div className="auth-form-wrapper border-slate-800 border rounded-md dark:border-slate-200  px-6 py-12">
+        <div className="max-w-lg border-slate-800 border-2 shadow-black rounded-md dark:border-slate-500  px-6 py-12">
             <div className="mb-8 text-2xl font-medium text-center text-slate-700 dark:text-slate-100">
                 Log in to Canary
             </div>
@@ -53,7 +53,7 @@ export default function Login() {
                 </div>
                 <button
                     disabled={isLoading}
-                    className="primary-bg-color rounded-full w-full py-1.5 my-2 text-slate-100 font-medium"
+                    className="bg-primary-color rounded-full w-full py-1.5 my-2 text-slate-100 font-medium"
                 >
                     Login
                 </button>
@@ -67,7 +67,7 @@ export default function Login() {
                 {error ? <div className="text-rose-500 text-sm text-center font-medium py-1">{error}</div> : null}
                 <div className="mt-4 text-sm font-light dark:text-slate-100 text-center">
                     Don't have an account?
-                    <button className="primary-color font-medium ml-1" onClick={() => navigate("/auth/signup")}>
+                    <button className="text-primary-color font-medium ml-1" onClick={() => navigate("/auth/signup")}>
                         Join Canary
                     </button>
                 </div>

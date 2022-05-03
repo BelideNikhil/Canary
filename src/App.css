@@ -3,22 +3,3 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Oswald:wght@300;400;500;600&display=swap");
-
-:root {
-    --primary-color: #1d9bf0;
-}
-
-.primary-color {
-    color: var(--primary-color);
-}
-.primary-border {
-    border-color: var(--primary-color);
-}
-.primary-bg-color {
-    background-color: var(--primary-color);
-}
-
-.auth-form-wrapper {
-    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-    max-width: 32rem;
-}

@@ -16,7 +16,7 @@ export default function Home() {
                     navigate("/auth/login");
                 }}
                 disabled={isLoading}
-                className="primary-bg-color rounded-full px-3 py-1.5 my-2 text-slate-100 font-medium"
+                className="bg-primary-color rounded-full px-3 py-1.5 my-2 text-slate-100 font-medium"
             >
                 Logout
             </button>

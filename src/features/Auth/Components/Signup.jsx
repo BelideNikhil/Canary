@@ -43,7 +43,7 @@ export default function Signup() {
         }
     }
     return (
-        <div className="auth-form-wrapper border-slate-800 border rounded-md dark:border-slate-200  px-6 py-4">
+        <div className="max-w-lg border-slate-800  rounded-md border-2 shadow-black dark:border-slate-500  px-6 py-4">
             <div className="mb-4 text-2xl font-medium text-center text-slate-700 dark:text-slate-100">Sign In</div>
             <form onSubmit={formSubmitHandler}>
                 <div className="mb-3">
@@ -165,7 +165,7 @@ export default function Signup() {
                 </div>
                 <button
                     disabled={isLoading}
-                    className="primary-bg-color rounded-full w-full py-1.5 my-2 text-slate-100 font-medium"
+                    className="bg-primary-color rounded-full w-full py-1.5 my-2 text-slate-100 font-medium"
                 >
                     {isLoading ? <Loading /> : "Sign up"}
                 </button>
@@ -173,7 +173,7 @@ export default function Signup() {
                 {error ? <div className="text-rose-500 text-sm text-center font-medium py-1">{error}</div> : null}
                 <div className="mt-4 text-sm font-light dark:text-slate-100 text-center">
                     Already have an account?
-                    <button className="primary-color font-medium ml-1" onClick={() => navigate("/auth/login")}>
+                    <button className="text-primary-color font-medium ml-1" onClick={() => navigate("/auth/login")}>
                         Sign in
                     </button>
                 </div>
