@@ -26,8 +26,8 @@ const initialNewUser = {
 export default function Signup() {
     const [userData, setUserData] = useState(initialNewUser);
     const [signupErrState, signupErrorDispatch] = useReducer(signupErrorReducer, initialSignUpError);
+    const [togglePasswords, setTogglePasswords] = useState({ passwordToggle: false, confirmPassword: false });
 
-    const [togglePassword, setTogglePassword] = useState(false);
     const {
         auth: { error, isLoading },
     } = useSelector((state) => state);
@@ -103,14 +103,18 @@ export default function Signup() {
                             <label className="text-left text-xs text-slate-500 dark:text-slate-300">Password</label>
                             <input
                                 value={userData.password}
-                                type={togglePassword ? "text" : "password"}
+                                type={togglePasswords.password ? "text" : "password"}
                                 onChange={(e) => setUserData((prev) => ({ ...prev, password: e.target.value }))}
                                 className="focus:outline-none text-xs  bg-slate-100 dark:bg-slate-800 dark:text-slate-100"
                             />
                         </div>
-                        <button type="button" className="h-6" onClick={() => setTogglePassword((prev) => !prev)}>
+                        <button
+                            type="button"
+                            className="h-6"
+                            onClick={() => setTogglePasswords((prev) => ({ ...prev, password: !prev.password }))}
+                        >
                             <span className="material-icons-outlined text-slate-400	text-xl">
-                                {togglePassword ? "visibility" : "visibility_off"}
+                                {togglePasswords.password ? "visibility" : "visibility_off"}
                             </span>
                         </button>
                     </div>
@@ -129,14 +133,20 @@ export default function Signup() {
                             </label>
                             <input
                                 value={userData.confirmPassword}
-                                type={togglePassword ? "text" : "password"}
+                                type={togglePasswords.confirmPassword ? "text" : "password"}
                                 onChange={(e) => setUserData((prev) => ({ ...prev, confirmPassword: e.target.value }))}
                                 className="focus:outline-none text-xs  bg-slate-100 dark:bg-slate-800 dark:text-slate-100"
                             />
                         </div>
-                        <button type="button" className="h-6" onClick={() => setTogglePassword((prev) => !prev)}>
+                        <button
+                            type="button"
+                            className="h-6"
+                            onClick={() =>
+                                setTogglePasswords((prev) => ({ ...prev, confirmPassword: !prev.confirmPassword }))
+                            }
+                        >
                             <span className="material-icons-outlined text-slate-400	text-xl">
-                                {togglePassword ? "visibility" : "visibility_off"}
+                                {togglePasswords.confirmPassword ? "visibility" : "visibility_off"}
                             </span>
                         </button>
                     </div>
