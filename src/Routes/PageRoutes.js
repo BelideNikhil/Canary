@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import PrivateRoute from "./PrivateRoute";
 import Login from "../features/Auth/Components/Login";
 import Signup from "../features/Auth/Components/Signup";
-import Home from "../Home";
+import Home from "../features/Post/Home";
 import UserAuth from "../features/Auth/UserAuth";
 
 export default function PageRoutes() {

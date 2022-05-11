@@ -1,9 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-import { userSignup } from "../authSlice";
+import { userSignup } from "../Utils";
 import { SignupFormValidator } from "../../../Utils/SignupValidator";
-import { Loading } from "../../../Components";
 import { signupErrorReducer } from "../Reducers/SignupErrorReducer";
 
 const initialSignUpError = {
@@ -178,7 +177,7 @@ export default function Signup() {
                     disabled={isLoading}
                     className="bg-primary-color rounded-full w-full py-1.5 my-2 text-slate-100 font-medium"
                 >
-                    {isLoading ? <Loading /> : "Sign up"}
+                    Sign up
                 </button>
 
                 {error ? <div className="text-rose-500 text-sm text-center font-medium py-1">{error}</div> : null}
