@@ -32,7 +32,7 @@ export default function PostCard({ post }) {
                     {showOptions ? <OptionsModal post={post} /> : null}
                 </div>
             </div>
-            <div className="py-2 text-slate-900 dark:text-slate-100">{post.content}</div>
+            <div className="py-2 text-slate-900 dark:text-slate-100 break-all">{post.content}</div>
             <div className="pt-3">
                 <button className="mx-3 w-6 h-6 text-slate-600 dark:text-slate-300">
                     <span className="material-icons-outlined">chat_bubble_outline</span>
