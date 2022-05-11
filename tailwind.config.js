@@ -10,8 +10,8 @@ module.exports = {
                 black: "4px 4px 0 #212121",
             },
             zIndex: {
-                4: "4" /* home heading */,
                 10: "10" /*post modal */,
+                9: "9" /*home heading */,
             },
         },
         fontFamily: {

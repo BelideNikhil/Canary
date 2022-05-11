@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newPost, editPost } from "../Utils";
+import { useClickOustide } from "../../../Hooks/useClickOutside";
 
 export default function ModalPost({ setShowModal, post }) {
     const [content, setContent] = useState(post?.content || "");
     const contentRef = useRef(null);
+    const modalRef = useRef(null);
     const dispatch = useDispatch();
     const { token } = useSelector((state) => state.auth);
 
@@ -24,6 +26,9 @@ export default function ModalPost({ setShowModal, post }) {
         setContent("");
         setShowModal(false);
     }
+
+    useClickOustide(modalRef, setShowModal);
+
     useEffect(() => {
         contentRef.current.textContent = content;
     }, [content]);
@@ -31,6 +36,7 @@ export default function ModalPost({ setShowModal, post }) {
     return (
         <div className="fixed inset-0 bg-[#00000080] z-10 flex w-full justify-center items-center">
             <div
+                ref={modalRef}
                 className=" pt-4 pb-2 px-3 border-y border-slate-500 rounded-md w-1/3 bg-slate-100 dark:bg-slate-700"
                 onClick={focusHandler}
             >
