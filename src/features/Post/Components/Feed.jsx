@@ -10,6 +10,7 @@ export default function Feed() {
 
     useEffect(() => {
         dispatch(allPosts());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     let reversedPosts = posts?.map((post) => post).reverse();
