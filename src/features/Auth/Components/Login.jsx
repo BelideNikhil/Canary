@@ -1,8 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { userLogin } from "../authSlice";
-import Loading from "../../../Components/Loading/Loading";
+import { userLogin } from "../Utils";
 
 export default function Login() {
     const [userData, setUserData] = useState({ username: "", password: "" });
@@ -64,7 +63,7 @@ export default function Login() {
                     className="text-slate-800 dark:text-slate-200 w-full py-1.5 text-xs font-medium flex justify-center items-center"
                     onClick={() => setUserData({ username: "Nikhil_Belide", password: "Password@123" })}
                 >
-                    {isLoading ? <Loading /> : "Login as Guest"}
+                    Login as Guest
                 </button>
                 {error ? <div className="text-rose-500 text-sm text-center font-medium py-1">{error}</div> : null}
                 <div className="mt-4 text-sm font-light dark:text-slate-100 text-center">

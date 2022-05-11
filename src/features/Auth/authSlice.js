@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+import { userLogin, userSignup } from "./Utils";
 
 const localStorageData = JSON.parse(localStorage.getItem("Canary_User"));
 
@@ -9,36 +9,6 @@ const initialState = {
     isLoading: false,
     error: "",
 };
-
-export const userLogin = createAsyncThunk("auth/login", async ({ username, password }, { rejectWithValue }) => {
-    try {
-        const { status, data } = await axios.post("/api/auth/login", { username, password });
-        if (status === 200) {
-            localStorage.setItem(
-                "Canary_User",
-                JSON.stringify({ token: data.encodedToken, userDetails: data.foundUser })
-            );
-            return data;
-        }
-    } catch (error) {
-        return rejectWithValue(error.response.data.errors[0].split(".")[0]);
-    }
-});
-
-export const userSignup = createAsyncThunk("auth/signup", async ({ username, password }, { rejectWithValue }) => {
-    try {
-        const { status, data } = await axios.post("/api/auth/signup", { username, password });
-        if (status === 201) {
-            localStorage.setItem(
-                "Canary_User",
-                JSON.stringify({ token: data.encodedToken, userDetails: data.createdUser })
-            );
-            return data;
-        }
-    } catch (error) {
-        return rejectWithValue(error.response.data.errors[0].split(".")[0]);
-    }
-});
 
 const extraReducers = {
     [userLogin.fulfilled]: (state, { payload }) => {
