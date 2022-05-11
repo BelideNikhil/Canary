@@ -14,6 +14,7 @@ export const users = [
         password: "adarshBalika123",
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        fullName: "Adarsh Balika",
     },
     {
         firstName: "Nikhil",
@@ -22,5 +23,6 @@ export const users = [
         password: "Password@123",
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        fullName: "Nikhil Belide",
     },
 ];
