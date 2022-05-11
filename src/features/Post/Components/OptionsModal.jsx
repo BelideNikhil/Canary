@@ -13,7 +13,7 @@ export default function OptionsModal({ post }) {
 
     return (
         <>
-            <div className="border-2 border-slate-500 rounded-md bg-slate-100 dark:bg-slate-800 absolute top-8 right-0 z-10 bg-slate-100 p-2">
+            <div className="border-2 border-slate-500 rounded-md bg-slate-100 dark:bg-slate-800 absolute top-8 right-0 z-8 bg-slate-100 p-2">
                 {post.username === username ? (
                     <>
                         <button
