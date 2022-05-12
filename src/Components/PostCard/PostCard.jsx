@@ -1,24 +1,24 @@
 import { useState, useRef } from "react";
-import OptionsModal from "./OptionsModal";
-import { useClickOustide } from "../../../Hooks/useClickOutside";
+import { useClickOustide } from "../../Hooks/useClickOutside";
+import { UserAvatar, OptionsModal } from "../index";
+import { useSelector } from "react-redux";
 
 export default function PostCard({ post }) {
     const [showOptions, setShowOptions] = useState(false);
     const optionsRef = useRef(null);
+    const {
+        user: { users },
+    } = useSelector((state) => state);
 
     useClickOustide(optionsRef, setShowOptions);
+    const user = users?.find((user) => user.username === post.username);
     return (
         <div
             className="border-b border-slate-400 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
             ref={optionsRef}
         >
             <div className="flex  justify-between items-center">
-                <div className="flex items-center">
-                    <div className="rounded-full w-9 h-9 bg-slate-500 text-slate-50 font-medium flex justify-center items-center">
-                        {post.username[0].toUpperCase()}
-                    </div>
-                    <div className="text-slate-900 dark:text-slate-100 text-sm font-medium ml-2">@{post.username}</div>
-                </div>
+                {user ? <UserAvatar user={user} /> : null}
                 <div className="relative">
                     <button
                         className="w-6 h-full text-slate-800 dark:text-slate-300"
