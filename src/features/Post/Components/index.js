@@ -1,7 +1,5 @@
-import Feed from "./Feed";
+import Feed from "../../../Components/Feed/Feed";
 import NewPost from "./NewPost";
-import PostCard from "./PostCard";
-import OptionsModal from "./OptionsModal";
-import ModalPost from "./ModalPost";
+import PostCard from "../../../Components/PostCard/PostCard";
 
-export { Feed, NewPost, PostCard, OptionsModal, ModalPost };
+export { Feed, NewPost, PostCard };

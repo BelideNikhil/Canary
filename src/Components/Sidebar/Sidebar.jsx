@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import ModalPost from "../../features/Post/Components/ModalPost";
+import { EditModal } from "../index";
 
 export default function Sidebar() {
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
-
+    const {
+        userDetails: { username },
+    } = useSelector((state) => state.auth);
     return (
         <>
             <div className="min-h-screen w-52 m-auto px-1">
@@ -39,7 +42,7 @@ export default function Sidebar() {
                         <span className={`material-icons-outlined mr-4`}>bookmark_border</span>Bookmarks
                     </NavLink>
                     <NavLink
-                        to="/profile"
+                        to={`/profile/${username}`}
                         className={`sidebar-btn home-btn text-md text-slate-600 dark:text-slate-300 flex items-center w-max hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full pl-4 pr-8 py-2 mb-2 active:scale-[0.98] 
                     ${({ isActive }) => (isActive ? "active" : "")} `}
                     >
@@ -53,7 +56,7 @@ export default function Sidebar() {
                     </button>
                 </div>
             </div>
-            {showModal ? <ModalPost setShowModal={setShowModal} /> : null}
+            {showModal ? <EditModal setShowModal={setShowModal} /> : null}
         </>
     );
 }

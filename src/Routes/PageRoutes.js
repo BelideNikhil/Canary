@@ -4,6 +4,7 @@ import PrivateRoute from "./PrivateRoute";
 import Login from "../features/Auth/Components/Login";
 import Signup from "../features/Auth/Components/Signup";
 import Home from "../features/Post/Home";
+import User from "../features/User/User";
 import UserAuth from "../features/Auth/UserAuth";
 
 export default function PageRoutes() {
@@ -12,6 +13,7 @@ export default function PageRoutes() {
         <Routes>
             <Route element={<PrivateRoute />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/profile/:username" element={<User />} />
             </Route>
 
             <Route path="/auth" element={<UserAuth />}>
