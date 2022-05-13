@@ -53,7 +53,7 @@ export default function OptionsModal({ post }) {
                         onClick={() => dispatch(followUser({ token, followUserId: currentPostUser._id }))}
                         className="flex items-center p-1 text-slate-700 text-sm font-medium dark:text-slate-200"
                     >
-                        <span class="material-icons-outlined mr-2">person_add</span> Follow
+                        <span className="material-icons-outlined mr-2">person_add</span> Follow
                     </button>
                 )}
             </div>
