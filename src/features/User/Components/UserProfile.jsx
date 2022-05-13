@@ -26,6 +26,7 @@ export default function UserProfile() {
 
     const currentUserDetails = users?.find((user) => user.username === username);
     const filteredPosts = posts?.filter((post) => post.username === username);
+
     return (
         <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
             <div className="pt-8 pb-5 px-5 border-b-2 border-slate-300 bg-gray-200 dark:bg-slate-900">
@@ -33,12 +34,16 @@ export default function UserProfile() {
                     <div className="flex">
                         {isLoading ? (
                             <Loading />
-                        ) : (
+                        ) : currentUserDetails?.profileUrl ? (
                             <img
                                 src={currentUserDetails?.profileUrl}
-                                alt={currentUserDetails?.username}
-                                className="rounded-full w-28 h-28 border-2 border-primary-color mr-8"
+                                alt={currentUserDetails?.fullName}
+                                className="rounded-full  w-28 h-28 mr-2 border-2 border-primary-color"
                             />
+                        ) : (
+                            <div className="rounded-full shrink-0  w-28 h-28 mr-2 border-2 border-primary-color bg-slate-500 text-slate-50 font-medium flex justify-center items-center">
+                                {currentUserDetails?.username[0].toUpperCase()}
+                            </div>
                         )}
                         <div>
                             <div className="text-slate-800 dark:text-slate-100 font-semibold">

@@ -33,17 +33,24 @@ export default function EditProfileModal({ setProfileModal, userDetails }) {
         setProfileModal(false);
     }
     useClickOustide(profileModalRef, setProfileModal);
+
     return (
         <div className="fixed inset-0 flex justify-center items-center bg-modal-background">
             <div className="bg-slate-100 dark:bg-slate-800 w-11/12 max-w-lg rounded-md px-5 py-4" ref={profileModalRef}>
                 <form onSubmit={formSubmitHandler}>
                     <div className=" flex justify-center mb-3">
                         <div className="relative">
-                            <img
-                                src={userDetails?.profileUrl}
-                                alt={userDetails?.username}
-                                className="rounded-full w-28 h-28"
-                            />
+                            {userDetails.profileUrl ? (
+                                <img
+                                    src={newProfileUrl ? URL.createObjectURL(newProfileUrl) : userDetails?.profileUrl}
+                                    alt={userDetails?.username}
+                                    className="rounded-full w-28 h-28"
+                                />
+                            ) : (
+                                <div className="rounded-full shrink-0  w-28 h-28 mr-2 border-2 border-primary-color bg-slate-500 text-slate-50 font-medium flex justify-center items-center">
+                                    {userDetails?.username[0].toUpperCase()}
+                                </div>
+                            )}
                             <label>
                                 <span className="material-icons absolute bottom-[-5px] right-0 text-slate-800 dark:text-slate-200 cursor-pointer">
                                     photo_camera
