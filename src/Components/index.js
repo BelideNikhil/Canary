@@ -9,7 +9,9 @@ import EditModal from "./EditModal/EditModal";
 import OptionsModal from "./OptionsModal/OptionsModal";
 import PageHeader from "./PageHeader/PageHeader";
 import SinglePost from "./SinglePost/SinglePost";
-
+import CommentModal from "./CommentModal/CommentModal";
+import CommentOptionsModal from "./CommentModal/CommentOptionsModal";
+import SingleComment from "./SingleComment/SingleComment";
 export {
     Loading,
     Sidebar,
@@ -22,4 +24,7 @@ export {
     OptionsModal,
     PageHeader,
     SinglePost,
+    CommentModal,
+    CommentOptionsModal,
+    SingleComment,
 };
