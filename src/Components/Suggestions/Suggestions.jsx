@@ -14,8 +14,7 @@ export default function Suggestions() {
 
     useEffect(() => {
         dispatch(getUsers());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     const userData = users?.find((user) => user.username === userDetails?.username);
     const filteredUsers = users

@@ -9,8 +9,7 @@ export default function Post() {
 
     useEffect(() => {
         dispatch(allPosts());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     const { posts } = useSelector((state) => state.post);
     let reversedPosts = posts?.map((post) => post).reverse();

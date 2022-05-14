@@ -21,8 +21,7 @@ export default function UserProfile() {
 
     useEffect(() => {
         dispatch(allPosts());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     const currentUserDetails = users?.find((user) => user.username === username);
     const filteredPosts = posts?.filter((post) => post.username === username);

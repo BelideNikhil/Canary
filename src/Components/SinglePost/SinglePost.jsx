@@ -29,8 +29,7 @@ export default function SinglePost() {
     useEffect(() => {
         dispatch(getPost({ postId }));
         return () => dispatch(cleanSinglePost());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [posts, postId]);
+    }, [posts, postId, dispatch]);
 
     useClickOustide(optionsRef, setShowOptions);
 

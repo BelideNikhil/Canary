@@ -14,8 +14,7 @@ export default function Bookmarks() {
 
     useEffect(() => {
         dispatch(getBookmarks({ token }));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [token, dispatch]);
 
     const bookmarkedPost = posts.filter((post) => bookmarks.includes(post._id));
 
