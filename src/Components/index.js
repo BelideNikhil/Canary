@@ -7,5 +7,19 @@ import UserAvatar from "./UserAvatar/UserAvatar";
 import PostCard from "./PostCard/PostCard";
 import EditModal from "./EditModal/EditModal";
 import OptionsModal from "./OptionsModal/OptionsModal";
+import PageHeader from "./PageHeader/PageHeader";
+import SinglePost from "./SinglePost/SinglePost";
 
-export { Loading, Sidebar, Suggestions, Feed, FollowListModal, UserAvatar, PostCard, EditModal, OptionsModal };
+export {
+    Loading,
+    Sidebar,
+    Suggestions,
+    Feed,
+    FollowListModal,
+    UserAvatar,
+    PostCard,
+    EditModal,
+    OptionsModal,
+    PageHeader,
+    SinglePost,
+};

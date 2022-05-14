@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { newPost, deletePost, allPosts, editPost } from "./Utils";
+import { newPost, deletePost, allPosts, editPost, likePost, dislikePost, getPost } from "./Utils";
 
 const extraReducers = {
     [allPosts.pending]: (state) => {
@@ -38,13 +38,45 @@ const extraReducers = {
     [deletePost.rejected]: (state, { payload }) => {
         state.error = payload;
     },
+    [likePost.fulfilled]: (state, { payload }) => {
+        state.error = "";
+        state.posts = payload;
+    },
+    [likePost.rejected]: (state, { payload }) => {
+        state.error = payload;
+    },
+    [dislikePost.fulfilled]: (state, { payload }) => {
+        state.error = "";
+        state.posts = payload;
+    },
+    [dislikePost.rejected]: (state, { payload }) => {
+        state.error = payload;
+    },
+    [getPost.pending]: (state) => {
+        state.isLoading = true;
+    },
+    [getPost.fulfilled]: (state, { payload }) => {
+        state.isLoading = false;
+        state.error = "";
+        state.singlePost = payload;
+    },
+    [getPost.rejected]: (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+    },
 };
 
 export const postSlice = createSlice({
     name: "post",
-    initialState: { posts: [], isLoading: false, error: "" },
-    reducers: {},
+    initialState: { posts: [], isLoading: false, error: "", singlePost: null },
+    reducers: {
+        cleanSinglePost: (state) => {
+            state.singlePost = null;
+        },
+    },
     extraReducers,
 });
+
+export const { cleanSinglePost } = postSlice.actions;
 
 export default postSlice.reducer;

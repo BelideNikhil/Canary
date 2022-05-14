@@ -14,13 +14,12 @@ export default function Suggestions() {
 
     useEffect(() => {
         dispatch(getUsers());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
-    const userData = users?.find((user) => user.username === userDetails.username);
+    const userData = users?.find((user) => user.username === userDetails?.username);
     const filteredUsers = users
-        .filter((user) => !userData.following.find((item) => item.username === user.username))
-        .filter((user) => user.username !== userDetails.username);
+        ?.filter((user) => !userData?.following.find((item) => item.username === user?.username))
+        ?.filter((user) => user.username !== userDetails?.username);
 
     return (
         <div className="rounded-md bg-slate-200 dark:bg-slate-700 h-max w-max mt-6">

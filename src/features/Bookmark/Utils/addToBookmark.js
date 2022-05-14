@@ -1,15 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const unFollowUser = createAsyncThunk("/user/unfollow", async ({ followUserId, token }, { rejectWithValue }) => {
+export const addToBookmark = createAsyncThunk("/user/addToBoomark", async ({ token, postId }, { rejectWithValue }) => {
     try {
         const { status, data } = await axios.post(
-            `/api/users/unfollow/${followUserId}`,
+            `/api/users/bookmark/${postId}`,
             {},
             {
-                headers: {
-                    authorization: token,
-                },
+                headers: { authorization: token },
             }
         );
         if (status === 200) {
