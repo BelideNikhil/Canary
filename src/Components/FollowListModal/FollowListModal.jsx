@@ -28,7 +28,7 @@ export default function FollowListModal({ setFollowModal, followModal }) {
                                     setFollowModal((prev) => ({ ...prev, show: false }));
                                 }}
                             >
-                                <UserAvatar user={user} />
+                                <UserAvatar username={user.username} />
                             </div>
                         );
                     })

@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { EditModal } from "../index";
 import { deletePost } from "../../features/Post/Utils";
 import { followUser, unFollowUser } from "../../features/User/Utils";
+import { useNavigate } from "react-router-dom";
 
 export default function OptionsModal({ post }) {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {
         auth: {
             token,
@@ -19,7 +21,10 @@ export default function OptionsModal({ post }) {
     const currentPostUser = users?.find((user) => user.username === post.username);
     return (
         <>
-            <div className="border-2 border-slate-500 rounded-md bg-slate-100 dark:bg-slate-800 absolute top-8 right-0 z-8 bg-slate-100 p-2">
+            <div
+                className="border-2 border-slate-500 rounded-md bg-slate-100 dark:bg-slate-800 absolute top-8 right-0 z-8 bg-slate-100 p-2"
+                onClick={(e) => e.stopPropagation()}
+            >
                 {post.username === username ? (
                     <>
                         <button
@@ -36,6 +41,7 @@ export default function OptionsModal({ post }) {
                             onClick={(e) => {
                                 e.stopPropagation();
                                 dispatch(deletePost({ post, token }));
+                                navigate("/");
                             }}
                         >
                             <span className=" mr-2 material-icons-outlined">delete</span> Delete

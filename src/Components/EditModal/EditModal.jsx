@@ -38,7 +38,10 @@ export default function EditModal({ setShowModal, post }) {
             <div
                 ref={modalRef}
                 className=" pt-4 pb-2 px-3 border-y border-slate-500 rounded-md w-1/3 bg-slate-100 dark:bg-slate-700"
-                onClick={focusHandler}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    focusHandler();
+                }}
             >
                 <form onSubmit={formSubmitHandler}>
                     <div

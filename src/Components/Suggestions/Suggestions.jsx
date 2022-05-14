@@ -31,7 +31,7 @@ export default function Suggestions() {
                         role="button"
                         onClick={() => navigate(`/profile/${user.username}`)}
                     >
-                        <UserAvatar user={user} />
+                        <UserAvatar username={user.username} />
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
