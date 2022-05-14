@@ -46,7 +46,7 @@ export default function OptionsModal({ post }) {
                         onClick={() => dispatch(unFollowUser({ token, followUserId: currentPostUser._id }))}
                         className="flex items-center p-1 text-slate-700 text-sm font-medium dark:text-slate-200"
                     >
-                        <span class="material-icons-outlined mr-2">person_remove</span> Unfollow
+                        <span className="material-icons-outlined mr-2">person_remove</span> Unfollow
                     </button>
                 ) : (
                     <button
