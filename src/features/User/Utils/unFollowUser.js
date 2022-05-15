@@ -1,21 +1,26 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-export const unFollowUser = createAsyncThunk("/user/unfollow", async ({ followUserId, token }, { rejectWithValue }) => {
-    try {
-        const { status, data } = await axios.post(
-            `/api/users/unfollow/${followUserId}`,
-            {},
-            {
-                headers: {
-                    authorization: token,
-                },
+export const unFollowUser = createAsyncThunk(
+    "/user/unFollowUser",
+    async ({ followUserId, token }, { rejectWithValue }) => {
+        try {
+            const { status, data } = await axios.post(
+                `/api/users/unfollow/${followUserId}`,
+                {},
+                {
+                    headers: {
+                        authorization: token,
+                    },
+                }
+            );
+            if (status === 200) {
+                toast.success(` ${data.followUser.username} unfollowed`);
+                return data;
             }
-        );
-        if (status === 200) {
-            return data.bookmarks;
+        } catch (error) {
+            return rejectWithValue(error.response.data.errors[0].split(".")[0]);
         }
-    } catch (error) {
-        return rejectWithValue(error.response.data.errors[0].split(".")[0]);
     }
-});
+);
