@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userLogin, userSignup } from "./Utils";
+import toast from "react-hot-toast";
 
 const localStorageData = JSON.parse(localStorage.getItem("Canary_User"));
 
@@ -45,6 +46,7 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         userLogout: (state) => {
+            toast.success(`Logout Successful`);
             localStorage.removeItem("Canary_User");
             state.token = "";
             state.userDetails = {};

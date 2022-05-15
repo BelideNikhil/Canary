@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-export const followUser = createAsyncThunk("/user/follow", async ({ followUserId, token }, { rejectWithValue }) => {
+export const followUser = createAsyncThunk("/user/followUser", async ({ followUserId, token }, { rejectWithValue }) => {
     try {
         const { status, data } = await axios.post(
             `/api/users/follow/${followUserId}`,
@@ -11,6 +12,7 @@ export const followUser = createAsyncThunk("/user/follow", async ({ followUserId
             }
         );
         if (status === 200) {
+            toast.success(`Now Following ${data.followUser.username}`);
             return data;
         }
     } catch (error) {

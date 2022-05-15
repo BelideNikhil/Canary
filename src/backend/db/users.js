@@ -50,6 +50,13 @@ export const users = [
         following: [
             {
                 _id: uuid(),
+                username: "elonmusk",
+                fullName: "elonmusk",
+                profileUrl:
+                    "https://cdn.vox-cdn.com/thumbor/4QtOwnOxCdwESvt1-CpQSTZvHHA=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19932738/1206292068.jpg.jpg",
+            },
+            {
+                _id: uuid(),
                 username: "VANESSA_HERE",
                 fullName: "Christiana Vanessa",
                 profileUrl: "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652278882/Canary/user_six_roalff.webp",
@@ -68,7 +75,14 @@ export const users = [
         website: "https://www.tesla.com/elon-musk",
         profileUrl:
             "https://cdn.vox-cdn.com/thumbor/4QtOwnOxCdwESvt1-CpQSTZvHHA=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19932738/1206292068.jpg.jpg",
-        followers: [],
+        followers: [
+            {
+                _id: uuid(),
+                username: "Nikhil_Belide",
+                fullName: "Nikhil Belide",
+                profileUrl: "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652278883/Canary/user_four_efnglw.png",
+            },
+        ],
         following: [
             {
                 _id: uuid(),

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { likePost, dislikePost } from "../../features/Post/Utils";
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { useNavigate } from "react-router-dom";
+import { GetPostDate } from "../../Utils";
 
 export default function PostCard({ post }) {
     const [showOptions, setShowOptions] = useState(false);
@@ -38,7 +39,14 @@ export default function PostCard({ post }) {
                 onClick={() => navigate(`/post/${post.id}`)}
             >
                 <div className="flex  justify-between items-center">
-                    {currentUser ? <UserAvatar username={currentUser.username} /> : null}
+                    <div className="flex">
+                        {currentUser ? <UserAvatar username={currentUser.username} /> : null}
+                        {post?.createdAt ? (
+                            <span className="font-medium text-xs text-slate-800 dark:text-slate-100 mt-2">
+                                · {GetPostDate(post.createdAt)}
+                            </span>
+                        ) : null}
+                    </div>
                     <div className="relative">
                         <button
                             className="w-6 h-full text-slate-800 dark:text-slate-300"
