@@ -1,5 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { newPost, deletePost, allPosts, editPost, likePost, dislikePost, getPost } from "./Utils";
+import {
+    newPost,
+    deletePost,
+    allPosts,
+    editPost,
+    likePost,
+    dislikePost,
+    getPost,
+    addComment,
+    editComment,
+    deleteComment,
+} from "./Utils";
 
 const extraReducers = {
     [allPosts.pending]: (state) => {
@@ -62,6 +73,27 @@ const extraReducers = {
     },
     [getPost.rejected]: (state, { payload }) => {
         state.isLoading = false;
+        state.error = payload;
+    },
+    [addComment.fulfilled]: (state, { payload }) => {
+        state.error = "";
+        state.posts = payload;
+    },
+    [addComment.rejected]: (state, { payload }) => {
+        state.error = payload;
+    },
+    [editComment.fulfilled]: (state, { payload }) => {
+        state.error = "";
+        state.posts = payload;
+    },
+    [editComment.rejected]: (state, { payload }) => {
+        state.error = payload;
+    },
+    [deleteComment.fulfilled]: (state, { payload }) => {
+        state.error = "";
+        state.posts = payload;
+    },
+    [deleteComment.rejected]: (state, { payload }) => {
         state.error = payload;
     },
 };

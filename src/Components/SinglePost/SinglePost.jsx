@@ -2,14 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPost } from "../../features/Post/Utils/getPost";
-import { Sidebar, Suggestions, PageHeader, Loading, UserAvatar, OptionsModal } from "../index";
+import { Sidebar, Suggestions, PageHeader, Loading, UserAvatar, OptionsModal, SingleComment } from "../index";
 import { useClickOustide } from "../../Hooks/useClickOutside";
 import { likePost, dislikePost } from "../../features/Post/Utils";
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { cleanSinglePost } from "../../features/Post/postSlice";
+import { addComment } from "../../features/Post/Utils";
 
 export default function SinglePost() {
     const [showOptions, setShowOptions] = useState(false);
+    const [comment, setComment] = useState("");
 
     const dispatch = useDispatch();
     const { postId } = useParams();
@@ -33,6 +35,14 @@ export default function SinglePost() {
 
     useClickOustide(optionsRef, setShowOptions);
 
+    function commentSubmitHandler(e) {
+        e.preventDefault();
+        if (comment.trim()) {
+            dispatch(addComment({ token, postId: post._id, commentData: { comment } }));
+        }
+        setComment("");
+    }
+
     const currentUser = users?.find((user) => user.username === post?.username);
     const foundInLiked = post?.likes?.likedBy?.find((item) => item.username === username);
 
@@ -43,68 +53,100 @@ export default function SinglePost() {
             <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
                 <PageHeader pagename={"Post"} />
                 {post ? (
-                    <div
-                        className="border-b border-slate-400 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
-                        ref={optionsRef}
-                        onClick={() => navigate(`/post/${post.id}`)}
-                    >
-                        <div className="flex  justify-between items-center">
-                            {currentUser ? <UserAvatar user={currentUser} /> : null}
-                            <div className="relative">
-                                <button
-                                    className="w-6 h-full text-slate-800 dark:text-slate-300"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setShowOptions((prev) => !prev);
-                                    }}
-                                >
-                                    <span className="material-icons-outlined pointer-events-none">more_vert</span>
-                                </button>
-                                {showOptions ? <OptionsModal post={post} /> : null}
-                            </div>
-                        </div>
-                        <div className="py-2 text-slate-900 dark:text-slate-100 break-all mt-4">{post.content}</div>
-                        <div className="pt-3 flex justify-between mt-4">
-                            <div className="flex items-center">
-                                {foundInLiked ? (
+                    <>
+                        <div
+                            className="border-b border-slate-400 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
+                            ref={optionsRef}
+                            onClick={() => navigate(`/post/${post.id}`)}
+                        >
+                            <div className="flex  justify-between items-center">
+                                {currentUser ? <UserAvatar username={currentUser.username} /> : null}
+                                <div className="relative">
                                     <button
-                                        className=" mr-2 w-6 h-6 text-red-400 dark:text-red-500"
-                                        onClick={() => dispatch(dislikePost({ token, postId: post._id }))}
+                                        className="w-6 h-full text-slate-800 dark:text-slate-300"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setShowOptions((prev) => !prev);
+                                        }}
                                     >
-                                        <span className="material-icons">favorite</span>
+                                        <span className="material-icons-outlined pointer-events-none">more_vert</span>
+                                    </button>
+                                    {showOptions ? <OptionsModal post={post} /> : null}
+                                </div>
+                            </div>
+                            <div className="py-2 text-slate-900 dark:text-slate-100 break-all mt-4">{post.content}</div>
+                            <div className="pt-3 flex justify-between mt-4">
+                                <div className="flex items-center">
+                                    {foundInLiked ? (
+                                        <button
+                                            className=" mr-2 w-6 h-6 text-red-400 dark:text-red-500"
+                                            onClick={() => dispatch(dislikePost({ token, postId: post._id }))}
+                                        >
+                                            <span className="material-icons">favorite</span>
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300"
+                                            onClick={() => dispatch(likePost({ token, postId: post._id }))}
+                                        >
+                                            <span className="material-icons-outlined">favorite_border</span>
+                                        </button>
+                                    )}
+                                    <span className="font-medium text-slate-800 dark:text-slate-200">
+                                        {post?.likes?.likeCount}
+                                    </span>
+                                </div>
+                                <div className="flex items-center">
+                                    <button className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300">
+                                        <span className="material-icons-outlined">question_answer</span>
+                                    </button>
+                                    {post?.comments?.length > 0 ? (
+                                        <span className="font-medium text-slate-800 dark:text-slate-200">
+                                            {post.comments.length}
+                                        </span>
+                                    ) : null}
+                                </div>
+                                {foundInBookmarks ? (
+                                    <button
+                                        className=" mr-2 w-6 h-6 text-primary-color"
+                                        onClick={() => dispatch(removeFromBookmark({ token, postId: post._id }))}
+                                    >
+                                        <span className="material-icons">bookmark</span>
                                     </button>
                                 ) : (
                                     <button
                                         className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300"
-                                        onClick={() => dispatch(likePost({ token, postId: post._id }))}
+                                        onClick={() => dispatch(addToBookmark({ token, postId: post._id }))}
                                     >
-                                        <span className="material-icons-outlined">favorite_border</span>
+                                        <span className="material-icons-outlined">bookmark_border</span>
                                     </button>
                                 )}
-                                <span className="font-medium text-slate-800 dark:text-slate-200">
-                                    {post?.likes?.likeCount}
-                                </span>
                             </div>
-                            <button className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300">
-                                <span className="material-icons-outlined">question_answer</span>
-                            </button>
-                            {foundInBookmarks ? (
-                                <button
-                                    className=" mr-2 w-6 h-6 text-primary-color"
-                                    onClick={() => dispatch(removeFromBookmark({ token, postId: post._id }))}
-                                >
-                                    <span className="material-icons">bookmark</span>
-                                </button>
-                            ) : (
-                                <button
-                                    className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300"
-                                    onClick={() => dispatch(addToBookmark({ token, postId: post._id }))}
-                                >
-                                    <span className="material-icons-outlined">bookmark_border</span>
-                                </button>
-                            )}
                         </div>
-                    </div>
+                        <div className="p-2 border-y border-slate-500">
+                            <form onSubmit={commentSubmitHandler}>
+                                <input
+                                    type="text"
+                                    placeholder="Reply..."
+                                    onChange={(e) => setComment(e.target.value)}
+                                    className="outline-none w-full text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-800"
+                                />
+                                <div className="flex justify-end">
+                                    <button
+                                        disabled={!comment.trim()}
+                                        className="disabled:cursor-not-allowed text-sm disabled:opacity-40 bg-primary-color rounded-full px-3 py-0.5 my-2 text-slate-100"
+                                    >
+                                        Reply
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div>
+                            {post?.comments?.map((eachComment) => {
+                                return <SingleComment comment={eachComment} key={eachComment._id} post={post} />;
+                            })}
+                        </div>
+                    </>
                 ) : (
                     <div className="flex justify-center items-center">
                         <Loading />
