@@ -54,10 +54,11 @@ export default function UserProfile() {
                             <div className="text-slate-700 dark:text-slate-200  mb-2">{currentUserDetails?.bio}</div>
                             <div className="flex items-center mb-2">
                                 <span className="material-icons-outlined text-slate-400 mr-1">language</span>
-                                {/* eslint-disable-next-line react/jsx-no-target-blank */}
+
                                 <a
                                     href={currentUserDetails?.website}
                                     target="_blank"
+                                    rel="noreferrer"
                                     className="text-slate-800 dark:text-sky-500 text-sm hover:underline"
                                 >
                                     {currentUserDetails?.website}
@@ -98,12 +99,20 @@ export default function UserProfile() {
                     </div>
                     <div className="flex h-max">
                         {userDetails.username === username ? (
-                            <button
-                                onClick={() => setProfileModal(true)}
-                                className="rounded-full mr-4 h-max border-2 bg-gray-200 dark:bg-slate-900 border-primary-color px-3 text-slate-800 dark:text-slate-200"
-                            >
-                                Edit Profile
-                            </button>
+                            <>
+                                <button
+                                    onClick={() => setProfileModal(true)}
+                                    className="rounded-full mr-4 h-max border-2 bg-gray-200 dark:bg-slate-900 border-primary-color px-3 text-slate-800 dark:text-slate-200"
+                                >
+                                    Edit Profile
+                                </button>
+                                <button
+                                    className="text-slate-800 dark:text-slate-100 w-6 h-6 self-center"
+                                    onClick={() => dispatch(userLogout())}
+                                >
+                                    <span className="material-icons-outlined">logout</span>
+                                </button>
+                            </>
                         ) : currentUserDetails?.followers?.find((user) => user.username === userDetails.username) ? (
                             <button
                                 onClick={() => dispatch(unFollowUser({ token, followUserId: currentUserDetails._id }))}
@@ -119,12 +128,6 @@ export default function UserProfile() {
                                 Follow
                             </button>
                         )}
-                        <button
-                            className="text-slate-800 dark:text-slate-100 w-6 h-6 self-center"
-                            onClick={() => dispatch(userLogout())}
-                        >
-                            <span className="material-icons-outlined">logout</span>
-                        </button>
                     </div>
                 </div>
             </div>
