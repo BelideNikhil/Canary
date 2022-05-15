@@ -100,15 +100,24 @@ const extraReducers = {
 
 export const postSlice = createSlice({
     name: "post",
-    initialState: { posts: [], isLoading: false, error: "", singlePost: null },
+    initialState: {
+        posts: [],
+        isLoading: false,
+        error: "",
+        singlePost: null,
+        selectedFilter: "Latest",
+    },
     reducers: {
         cleanSinglePost: (state) => {
             state.singlePost = null;
+        },
+        setSelectedFilter: (state, { payload }) => {
+            state.selectedFilter = payload;
         },
     },
     extraReducers,
 });
 
-export const { cleanSinglePost } = postSlice.actions;
+export const { cleanSinglePost, setSelectedFilter } = postSlice.actions;
 
 export default postSlice.reducer;
