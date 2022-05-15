@@ -21,22 +21,23 @@ export default function Bookmarks() {
     return (
         <div className="grid grid-cols-[13rem_2fr_1fr] w-[80%] gap-4 m-auto">
             <Sidebar />
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
-                    <PageHeader pagename={"Bookmarks"} />
-                    {bookmarkedPost.length ? (
-                        bookmarkedPost.map((post) => {
-                            return <PostCard post={post} key={post._id} />;
-                        })
-                    ) : (
-                        <div className="text-center p-5 font-medium text-lg	 text-slate-800 dark:text-slate-200">
-                            No Bookmarks found
-                        </div>
-                    )}
-                </div>
-            )}
+            <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+                <PageHeader pagename={"Bookmarks"} />
+                {isLoading ? (
+                    <div className="flex justify-center">
+                        <Loading />
+                    </div>
+                ) : bookmarkedPost.length ? (
+                    bookmarkedPost.map((post) => {
+                        return <PostCard post={post} key={post._id} />;
+                    })
+                ) : (
+                    <div className="text-center p-5 font-medium text-lg	 text-slate-800 dark:text-slate-200">
+                        No Bookmarks found
+                    </div>
+                )}
+            </div>
+
             <Suggestions />
         </div>
     );
