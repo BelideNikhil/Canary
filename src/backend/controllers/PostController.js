@@ -167,7 +167,7 @@ export const likePostHandler = function (schema, request) {
         if (post.likes.likedBy.some((currUser) => currUser._id === user._id)) {
             return new Response(400, {}, { errors: ["Cannot like a post that is already liked. "] });
         }
-        post.likes.dislikedBy = post.likes.dislikedBy.filter((currUser) => currUser._id !== user._id);
+        post.likes.dislikedBy = post.likes.dislikedBy.filter((currUser) => currUser.username !== user.username);
         post.likes.likeCount += 1;
         post.likes.likedBy.push(user);
         this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
@@ -209,7 +209,7 @@ export const dislikePostHandler = function (schema, request) {
             return new Response(400, {}, { errors: ["Cannot dislike a post that is already disliked. "] });
         }
         post.likes.likeCount -= 1;
-        const updatedLikedBy = post.likes.likedBy.filter((currUser) => currUser._id !== user._id);
+        const updatedLikedBy = post.likes.likedBy.filter((currUser) => currUser.username !== user.username);
         post.likes.dislikedBy.push(user);
         post = { ...post, likes: { ...post.likes, likedBy: updatedLikedBy } };
         this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
