@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPost } from "../../features/Post/Utils/getPost";
-import { Sidebar, Suggestions, PageHeader, Loading, UserAvatar, OptionsModal, SingleComment } from "../index";
+import { Sidebar, Suggestions, PageHeader, Loading, UserAvatar, OptionsModal, SingleComment, LikedBy } from "../index";
 import { useClickOustide } from "../../Hooks/useClickOutside";
 import { likePost, dislikePost } from "../../features/Post/Utils";
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { cleanSinglePost } from "../../features/Post/postSlice";
 import { addComment } from "../../features/Post/Utils";
+import { GetPostDate } from "../../Utils";
 
 export default function SinglePost() {
     const [showOptions, setShowOptions] = useState(false);
@@ -47,6 +48,7 @@ export default function SinglePost() {
     const foundInLiked = post?.likes?.likedBy?.find((item) => item.username === username);
 
     const foundInBookmarks = bookmarks?.find((bookmark) => bookmark === post?._id);
+
     return (
         <div className="grid grid-cols-[13rem_2fr_1fr] w-[80%] m-auto gap-4">
             <Sidebar />
@@ -60,7 +62,14 @@ export default function SinglePost() {
                             onClick={() => navigate(`/post/${post.id}`)}
                         >
                             <div className="flex  justify-between items-center">
-                                {currentUser ? <UserAvatar username={currentUser.username} /> : null}
+                                <div className="flex items">
+                                    {currentUser ? <UserAvatar username={currentUser.username} /> : null}
+                                    {post?.createdAt ? (
+                                        <span className="font-medium text-xs text-slate-800 dark:text-slate-100 mt-2">
+                                            · {GetPostDate(post.createdAt)}
+                                        </span>
+                                    ) : null}
+                                </div>
                                 <div className="relative">
                                     <button
                                         className="w-6 h-full text-slate-800 dark:text-slate-300"
@@ -122,6 +131,7 @@ export default function SinglePost() {
                                     </button>
                                 )}
                             </div>
+                            <LikedBy post={post} />
                         </div>
                         <div className="p-2 border-y border-slate-500">
                             <form onSubmit={commentSubmitHandler}>
@@ -142,9 +152,11 @@ export default function SinglePost() {
                             </form>
                         </div>
                         <div>
-                            {post?.comments?.map((eachComment) => {
-                                return <SingleComment comment={eachComment} key={eachComment._id} post={post} />;
-                            })}
+                            {post?.comments
+                                ? [...post.comments].reverse().map((eachComment) => {
+                                      return <SingleComment comment={eachComment} key={eachComment._id} post={post} />;
+                                  })
+                                : null}
                         </div>
                     </>
                 ) : (

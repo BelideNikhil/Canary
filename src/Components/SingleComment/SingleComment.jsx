@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { CommentOptionsModal, UserAvatar } from "../index";
-import { useRef } from "react";
 import { useClickOustide } from "../../Hooks/useClickOutside";
+import { GetPostDate } from "../../Utils";
 
 export default function SingleComment({ comment, post }) {
     const [showCommentOptions, setCommentOptions] = useState(false);
@@ -21,7 +21,14 @@ export default function SingleComment({ comment, post }) {
     return (
         <div className="border-b border-slate-400 px-4 py-3 ">
             <div className="flex justify-between">
-                <UserAvatar username={comment.username} />
+                <div className="flex">
+                    <UserAvatar username={comment.username} />
+                    {post?.createdAt ? (
+                        <span className="font-medium text-xs text-slate-800 dark:text-slate-100 mt-2">
+                            · {GetPostDate(comment.createdAt)}
+                        </span>
+                    ) : null}
+                </div>
                 {username === comment.username ? (
                     <div className="relative" ref={commentRef}>
                         <button
