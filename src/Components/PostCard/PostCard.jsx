@@ -35,7 +35,6 @@ export default function PostCard({ post }) {
         <>
             <div
                 className="border-b border-slate-400 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
-                ref={optionsRef}
                 onClick={() => navigate(`/post/${post.id}`)}
             >
                 <div className="flex  justify-between items-center">
@@ -47,7 +46,7 @@ export default function PostCard({ post }) {
                             </span>
                         ) : null}
                     </div>
-                    <div className="relative">
+                    <div className="relative" ref={optionsRef}>
                         <button
                             className="w-6 h-full text-slate-800 dark:text-slate-300"
                             onClick={(e) => {
@@ -55,7 +54,7 @@ export default function PostCard({ post }) {
                                 setShowOptions((prev) => !prev);
                             }}
                         >
-                            <span className="material-icons-outlined pointer-events-none">more_vert</span>
+                            <span className="material-icons-outlined hover:text-primary-color">more_vert</span>
                         </button>
                         {showOptions ? <OptionsModal post={post} /> : null}
                     </div>
@@ -81,7 +80,7 @@ export default function PostCard({ post }) {
                                     dispatch(likePost({ token, postId: post._id }));
                                 }}
                             >
-                                <span className="material-icons-outlined">favorite_border</span>
+                                <span className="material-icons-outlined hover:text-red-400">favorite_border</span>
                             </button>
                         )}
                         {likeCount > 0 ? (
@@ -96,7 +95,7 @@ export default function PostCard({ post }) {
                                 setCommentModal(true);
                             }}
                         >
-                            <span className="material-icons-outlined">question_answer</span>
+                            <span className="material-icons-outlined hover:text-emerald-500	">question_answer</span>
                         </button>
                         {post?.comments?.length > 0 ? (
                             <span className="font-medium text-slate-800 dark:text-slate-200">
@@ -116,13 +115,13 @@ export default function PostCard({ post }) {
                         </button>
                     ) : (
                         <button
-                            className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300"
+                            className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300 "
                             onClick={(e) => {
                                 e.stopPropagation();
                                 dispatch(addToBookmark({ token, postId: post._id }));
                             }}
                         >
-                            <span className="material-icons-outlined">bookmark_border</span>
+                            <span className="material-icons-outlined hover:text-primary-color">bookmark_border</span>
                         </button>
                     )}
                 </div>
