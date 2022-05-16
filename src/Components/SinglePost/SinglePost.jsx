@@ -2,22 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPost } from "../../features/Post/Utils/getPost";
-import { Sidebar, Suggestions, PageHeader, Loading, UserAvatar, OptionsModal, SingleComment, LikedBy } from "../index";
+import { Sidebar, BottomBar, PageHeader, Loading, UserAvatar, OptionsModal, SingleComment, LikedBy } from "../index";
 import { useClickOustide } from "../../Hooks/useClickOutside";
 import { likePost, dislikePost } from "../../features/Post/Utils";
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { cleanSinglePost } from "../../features/Post/postSlice";
 import { addComment } from "../../features/Post/Utils";
-import { GetPostDate } from "../../Utils";
+import { GetPostDate, SortBy } from "../../Utils";
+import UserPersonal from "../UserPersonal/UserPersonal";
 
 export default function SinglePost() {
     const [showOptions, setShowOptions] = useState(false);
     const [comment, setComment] = useState("");
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const commentRef = useRef(null);
+
     const { postId } = useParams();
     const optionsRef = useRef(null);
-    const navigate = useNavigate();
 
     const {
         post: { singlePost: post, posts },
@@ -44,15 +47,19 @@ export default function SinglePost() {
         setComment("");
     }
 
+    function focusHandler() {
+        commentRef.current && commentRef.current.focus();
+    }
+
     const currentUser = users?.find((user) => user.username === post?.username);
     const foundInLiked = post?.likes?.likedBy?.find((item) => item.username === username);
 
     const foundInBookmarks = bookmarks?.find((bookmark) => bookmark === post?._id);
 
     return (
-        <div className="grid grid-cols-[13rem_2fr_1fr] w-[80%] m-auto gap-4">
+        <div className="grid grid-cols-1fr md:grid-cols-[13rem_1fr] lg:grid-cols-[13rem_1fr_16rem]  w-full md:w-11/12 lg:w-[80%] gap-4 m-auto">
             <Sidebar />
-            <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+            <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
                 <PageHeader pagename={"Post"} />
                 {post ? (
                     <>
@@ -133,9 +140,10 @@ export default function SinglePost() {
                             </div>
                             <LikedBy post={post} />
                         </div>
-                        <div className="p-2 border-y border-slate-500">
+                        <div className="p-2 border-y border-slate-500" onClick={focusHandler}>
                             <form onSubmit={commentSubmitHandler}>
                                 <input
+                                    ref={commentRef}
                                     type="text"
                                     placeholder="Reply..."
                                     onChange={(e) => setComment(e.target.value)}
@@ -153,7 +161,7 @@ export default function SinglePost() {
                         </div>
                         <div>
                             {post?.comments
-                                ? [...post.comments].reverse().map((eachComment) => {
+                                ? SortBy(post.comments, "Latest").map((eachComment) => {
                                       return <SingleComment comment={eachComment} key={eachComment._id} post={post} />;
                                   })
                                 : null}
@@ -165,7 +173,8 @@ export default function SinglePost() {
                     </div>
                 )}
             </div>
-            <Suggestions />
+            <BottomBar />
+            <UserPersonal />
         </div>
     );
 }
