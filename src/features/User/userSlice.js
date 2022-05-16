@@ -8,6 +8,7 @@ export const userSlice = createSlice({
         error: "",
         darkTheme: JSON.parse(localStorage.getItem("canary_theme")) || false,
         users: [],
+        searchText: "",
     },
     reducers: {
         toggleTheme: (state, { payload }) => {
@@ -16,6 +17,9 @@ export const userSlice = createSlice({
         },
         setLoading: (state) => {
             state.isLoading = true;
+        },
+        setSearchText: (state, { payload }) => {
+            state.searchText = payload;
         },
     },
     extraReducers: {
@@ -62,6 +66,6 @@ export const userSlice = createSlice({
     },
 });
 
-export const { toggleTheme, setLoading } = userSlice.actions;
+export const { toggleTheme, setLoading, setSearchText } = userSlice.actions;
 
 export default userSlice.reducer;

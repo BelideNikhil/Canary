@@ -15,6 +15,9 @@ import SingleComment from "./SingleComment/SingleComment";
 import Explore from "./Explore/Explore";
 import LikedBy from "./LikedBy/LikedBy";
 import ToastWrapper from "./ToastWrapper/ToastWrapper";
+import Search from "./Search/Search";
+import UserPersonal from "./UserPersonal/UserPersonal";
+import BottomBar from "./BottomBar/BottomBar";
 
 export {
     Loading,
@@ -34,4 +37,7 @@ export {
     Explore,
     LikedBy,
     ToastWrapper,
+    Search,
+    UserPersonal,
+    BottomBar,
 };

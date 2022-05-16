@@ -1,4 +1,4 @@
-import { Sidebar, Suggestions, PageHeader } from "../../Components";
+import { Sidebar, PageHeader, UserPersonal, BottomBar } from "../../Components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBookmarks } from "./Utils";
@@ -19,9 +19,9 @@ export default function Bookmarks() {
     const bookmarkedPost = posts.filter((post) => bookmarks.includes(post._id));
 
     return (
-        <div className="grid grid-cols-[13rem_2fr_1fr] w-[80%] gap-4 m-auto">
+        <div className="grid grid-cols-1fr md:grid-cols-[13rem_1fr] lg:grid-cols-[13rem_1fr_16rem] w-full md:w-11/12 lg:w-[80%] gap-4 m-auto">
             <Sidebar />
-            <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+            <div className="md:border-x border-slate-500 h-screen overflow-y-auto no-scrollbar">
                 <PageHeader pagename={"Bookmarks"} />
                 {isLoading ? (
                     <div className="flex justify-center">
@@ -37,8 +37,8 @@ export default function Bookmarks() {
                     </div>
                 )}
             </div>
-
-            <Suggestions />
+            <BottomBar />
+            <UserPersonal />
         </div>
     );
 }

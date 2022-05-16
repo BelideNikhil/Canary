@@ -9,9 +9,10 @@ export default function Sidebar() {
     const {
         userDetails: { username },
     } = useSelector((state) => state.auth);
+
     return (
         <>
-            <div className="min-h-screen w-52 m-auto px-1">
+            <div className="min-h-screen w-52 m-auto px-1 hidden md:block">
                 <div role="button" className="mb-10" onClick={() => navigate("/")}>
                     <img src="/Canary.png" alt="" className="w-14 h-14 ml-2" />
                 </div>

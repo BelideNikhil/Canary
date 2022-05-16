@@ -37,8 +37,8 @@ export default function CommentModal({ post, setCommentModal, currentUser, curre
         <div className="fixed inset-0 bg-modal-background z-10 flex w-full justify-center items-center">
             <div
                 ref={modalRef}
-                className=" pt-4 pb-2 px-3 border-y border-slate-500 rounded-md w-1/3 bg-slate-100 dark:bg-slate-700"
-                onClick={(e) => focusHandler()}
+                className=" pt-4 pb-2 px-3 border-y border-slate-500 rounded-md w-11/12 max-w-xs md:max-w-md bg-slate-100 dark:bg-slate-700"
+                onClick={focusHandler}
             >
                 <div className="font-medium text-sm text-slate-800 dark:text-slate-100 mb-2">Replying to</div>
                 <UserAvatar username={currentUser?.username} />

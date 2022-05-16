@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Feed, Loading, FollowListModal } from "../../../Components";
+import { Feed, Loading, FollowListModal, PageHeader } from "../../../Components";
 import { allPosts } from "../../Post/Utils";
 import EditProfileModal from "./EditProfileModal";
 import { followUser, unFollowUser } from "../Utils";
 import { userLogout } from "../../Auth/authSlice";
+import { SortBy } from "../../../Utils";
 
 export default function UserProfile() {
     const [showProfileModal, setProfileModal] = useState(false);
@@ -25,12 +26,14 @@ export default function UserProfile() {
 
     const currentUserDetails = users?.find((user) => user.username === username);
     const filteredPosts = posts?.filter((post) => post.username === username);
+    const sortedPosts = SortBy(filteredPosts, "Latest");
 
     return (
-        <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
-            <div className="pt-8 pb-5 px-5 border-b-2 border-slate-300 bg-gray-200 dark:bg-slate-900">
-                <div className="flex justify-between">
-                    <div className="flex">
+        <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+            <PageHeader pagename={currentUserDetails?.username} />
+            <div className="px-5 xl:px-2 py-5 border-b-2 border-slate-300 bg-gray-200 dark:bg-slate-900">
+                <div className="flex flex-col xl:flex-row  justify-between">
+                    <div className="flex flex-col items-center xl:flex-row">
                         {isLoading ? (
                             <Loading />
                         ) : currentUserDetails?.profileUrl ? (
@@ -44,7 +47,7 @@ export default function UserProfile() {
                                 {currentUserDetails?.username[0].toUpperCase()}
                             </div>
                         )}
-                        <div>
+                        <div className="flex flex-col items-center xl:items-start">
                             <div className="text-slate-800 dark:text-slate-100 font-semibold">
                                 {currentUserDetails?.fullName}
                             </div>
@@ -97,12 +100,12 @@ export default function UserProfile() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex h-max">
+                    <div className="flex h-max justify-center mt-2">
                         {userDetails.username === username ? (
                             <>
                                 <button
                                     onClick={() => setProfileModal(true)}
-                                    className="rounded-full mr-4 h-max border-2 bg-gray-200 dark:bg-slate-900 border-primary-color px-3 text-slate-800 dark:text-slate-200"
+                                    className="rounded-full mr-4 text-sm font-medium h-max border-2 bg-gray-200 dark:bg-slate-900 border-primary-color px-3 text-slate-800 dark:text-slate-200"
                                 >
                                     Edit Profile
                                 </button>
@@ -116,7 +119,7 @@ export default function UserProfile() {
                         ) : currentUserDetails?.followers?.find((user) => user.username === userDetails.username) ? (
                             <button
                                 onClick={() => dispatch(unFollowUser({ token, followUserId: currentUserDetails._id }))}
-                                className="rounded-full mr-4 h-max border-2 border-primary-color px-3 text-slate-800 dark:text-slate-200"
+                                className="rounded-full  h-max border-2 border-primary-color px-3 text-slate-800 dark:text-slate-200"
                             >
                                 Unfollow
                             </button>
@@ -131,7 +134,7 @@ export default function UserProfile() {
                     </div>
                 </div>
             </div>
-            <Feed posts={filteredPosts} />
+            <Feed posts={sortedPosts} />
             {showProfileModal ? (
                 <EditProfileModal setProfileModal={setProfileModal} userDetails={currentUserDetails} />
             ) : null}

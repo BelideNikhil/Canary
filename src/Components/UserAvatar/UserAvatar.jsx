@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchText } from "../../features/User/userSlice";
 
-export default function UserAvatar({ username }) {
+export default function UserAvatar({ username, setFollowModal }) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { users } = useSelector((state) => state.user);
     const userDetails = users?.find((user) => user.username === username);
 
@@ -13,6 +15,8 @@ export default function UserAvatar({ username }) {
             onClick={(e) => {
                 e.stopPropagation();
                 navigate(`/profile/${userDetails.username}`);
+                dispatch(setSearchText(""));
+                return setFollowModal ? setFollowModal((prev) => ({ ...prev, show: false })) : null;
             }}
         >
             {userDetails?.profileUrl ? (

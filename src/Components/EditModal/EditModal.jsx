@@ -37,7 +37,7 @@ export default function EditModal({ setShowModal, post }) {
         <div className="fixed inset-0 bg-modal-background z-10 flex w-full justify-center items-center">
             <div
                 ref={modalRef}
-                className=" pt-4 pb-2 px-3 border-y border-slate-500 rounded-md w-1/3 bg-slate-100 dark:bg-slate-700"
+                className=" pt-4 pb-2 px-3 border-y border-slate-500 rounded-md w-10/12 max-w-md bg-slate-100 dark:bg-slate-700"
                 onClick={(e) => {
                     e.stopPropagation();
                     focusHandler();
@@ -50,7 +50,7 @@ export default function EditModal({ setShowModal, post }) {
                         role="textbox"
                         placeholder=""
                         onInput={(e) => setContent(e.currentTarget.textContent)}
-                        className="outline-none empty:before:content-['Happening....'] empty:before:text-slate-400 before:text-sm text-slate-900 dark:text-slate-100"
+                        className="outline-none empty:before:content-['Happening....'] empty:before:text-slate-400 before:text-sm py-2 text-slate-900 dark:text-slate-100"
                     />
                     <div className="flex justify-end">
                         <button

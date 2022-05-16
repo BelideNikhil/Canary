@@ -25,7 +25,7 @@ export default function Post() {
     const sortedPosts = SortBy(filteredPosts, selectedFilter);
 
     return (
-        <div className="border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+        <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
             <PageHeader pagename={"Home"} />
             <NewPost />
             <FilterBar />
