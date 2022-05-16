@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 export const newPost = createAsyncThunk("/post/newPost", async ({ postData, token }, { rejectWithValue }) => {
     try {
@@ -11,6 +12,7 @@ export const newPost = createAsyncThunk("/post/newPost", async ({ postData, toke
             }
         );
         if (status === 201) {
+            toast.success("New Post Added.");
             return data.posts;
         }
     } catch (error) {
