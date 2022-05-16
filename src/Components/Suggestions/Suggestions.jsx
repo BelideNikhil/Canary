@@ -21,9 +21,10 @@ export default function Suggestions() {
         ?.filter((user) => !userData?.following.find((item) => item.username === user?.username))
         ?.filter((user) => user.username !== userDetails?.username);
 
-    return (
-        <div className="rounded-md bg-slate-200 dark:bg-slate-700 h-max w-max mt-6">
-            {filteredUsers?.map((user) => {
+    return filteredUsers?.length > 0 ? (
+        <div className="rounded-md bg-slate-200 dark:bg-slate-700 h-max mt-6 py-2">
+            <div className="px-3 text-slate-800 dark:text-slate-200 font-medium">Who To Follow</div>
+            {filteredUsers.map((user) => {
                 return (
                     <div
                         key={user._id}
@@ -45,5 +46,5 @@ export default function Suggestions() {
                 );
             })}
         </div>
-    );
+    ) : null;
 }
