@@ -8,6 +8,7 @@ import { getPost } from "./getPost";
 import { addComment } from "./addComment";
 import { editComment } from "./editComment";
 import { deleteComment } from "./deleteComment";
+import { getPagedPosts } from "./getPagedPosts";
 
 export {
     newPost,
@@ -20,4 +21,5 @@ export {
     addComment,
     editComment,
     deleteComment,
+    getPagedPosts,
 };
