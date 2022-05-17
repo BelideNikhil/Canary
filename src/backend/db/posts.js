@@ -44,8 +44,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "My new portfolio in Bio",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -55,6 +54,9 @@ export const posts = [
         createdAt: formatDate(),
         updatedAt: formatDate(),
         comments: [],
+        postImgUrl:
+            "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652816334/Canary/Christina-Vanessa-Portfolio-Website-Example_umojac.jpg",
+        imageAlt: "VANESSA_HERE",
     },
     {
         _id: uuid(),
@@ -107,8 +109,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "I am the king!",
         likes: {
             likeCount: 2,
             likedBy: [
@@ -136,6 +137,8 @@ export const posts = [
             { comment: "Ha chal chal, patha hai", _id: uuid(), username: "Adarsh_Balika", createdAt: "2022-05-14" },
             { comment: "Nice Explanation", _id: uuid(), username: "himadri2110", createdAt: "2022-05-14" },
         ],
+        postImgUrl: "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652791119/Canary/pdffy8cl64ll2f8hbqjh.webp",
+        imageAlt: "pdffy8cl64ll2f8hbqjh",
     },
     {
         _id: uuid(),
@@ -161,8 +164,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "Life is boring without drugs!",
         likes: {
             likeCount: 2,
             likedBy: [
@@ -189,12 +191,15 @@ export const posts = [
         comments: [
             { comment: "I want drugs in Tesla", _id: uuid(), username: "elonmusk", createdAt: "2021-12-02" },
             {
-                comment: "Don't do such things Elon Bhaiya.",
+                comment: "Don't do such things.",
                 _id: uuid(),
                 username: "Adarsh_Balika",
                 createdAt: "2021-12-03",
             },
         ],
+        postImgUrl:
+            "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652813451/Canary/narcos_203_00873r1_wide-775f1c1b8a3fe57cb17da8361e5e1c165e90d12f_t7ryiq.jpg",
+        imageAlt: "pablo",
     },
     {
         _id: uuid(),
@@ -347,8 +352,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "New profile Updated",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -358,6 +362,8 @@ export const posts = [
         createdAt: formatDate(),
         updatedAt: formatDate(),
         comments: [],
+        postImgUrl: "https://i.pinimg.com/736x/37/d3/12/37d31294582078493774ab798ff943f9.jpg",
+        imageAlt: "Adarsh_Balika",
     },
     {
         _id: uuid(),
@@ -386,6 +392,9 @@ export const posts = [
         username: "elonmusk",
         createdAt: "2022-05-14",
         updatedAt: formatDate(),
+        postImgUrl:
+            "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652812832/Canary/hero-xpulse-200-modified-2021-price-3_ug9loc.jpg",
+        imageAlt: "hero-xpulse-200",
         comments: [
             { comment: "Where is Roadster?", _id: uuid(), username: "Adarsh_Balika", createdAt: "2022-05-14" },
             {
