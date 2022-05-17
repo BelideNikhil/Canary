@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { allPosts } from "../Utils";
 import { PageHeader } from "../../../Components";
 import { SortBy, FilterUserPosts } from "../../../Utils";
+import { getBookmarks } from "../../Bookmark/Utils";
 
 export default function Post() {
     const dispatch = useDispatch();
     const {
         post: { posts, selectedFilter },
         auth: {
+            token,
             userDetails: { username },
         },
         user: { users },
@@ -17,7 +19,8 @@ export default function Post() {
 
     useEffect(() => {
         dispatch(allPosts());
-    }, [dispatch]);
+        dispatch(getBookmarks({ token }));
+    }, [dispatch, token]);
 
     const currentUser = users?.find((user) => user.username === username);
 
@@ -25,7 +28,7 @@ export default function Post() {
     const sortedPosts = SortBy(filteredPosts, selectedFilter);
 
     return (
-        <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+        <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar pb-36">
             <PageHeader pagename={"Home"} />
             <NewPost />
             <FilterBar />
