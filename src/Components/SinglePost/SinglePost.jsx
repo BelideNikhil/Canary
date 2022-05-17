@@ -1,25 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { getPost } from "../../features/Post/Utils/getPost";
-import { Sidebar, BottomBar, PageHeader, Loading, UserAvatar, OptionsModal, SingleComment, LikedBy } from "../index";
+import {
+    Sidebar,
+    BottomBar,
+    PageHeader,
+    Loading,
+    UserAvatar,
+    OptionsModal,
+    SingleComment,
+    LikedBy,
+    Suggestions,
+} from "../index";
 import { useClickOustide } from "../../Hooks/useClickOutside";
-import { likePost, dislikePost } from "../../features/Post/Utils";
+import { likePost, dislikePost, addComment, getPost } from "../../features/Post/Utils";
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { cleanSinglePost } from "../../features/Post/postSlice";
-import { addComment } from "../../features/Post/Utils";
 import { GetPostDate, SortBy } from "../../Utils";
-import UserPersonal from "../UserPersonal/UserPersonal";
 
 export default function SinglePost() {
     const [showOptions, setShowOptions] = useState(false);
     const [comment, setComment] = useState("");
+    const { postId } = useParams();
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const commentRef = useRef(null);
-
-    const { postId } = useParams();
     const optionsRef = useRef(null);
 
     const {
@@ -57,9 +63,9 @@ export default function SinglePost() {
     const foundInBookmarks = bookmarks?.find((bookmark) => bookmark === post?._id);
 
     return (
-        <div className="grid grid-cols-1fr md:grid-cols-[13rem_1fr] lg:grid-cols-[13rem_1fr_16rem]  w-full md:w-11/12 lg:w-[80%] gap-4 m-auto">
+        <div className="grid grid-cols-1fr md:grid-cols-[13rem_1fr] lg:grid-cols-[13rem_1fr_16rem]  w-full md:w-11/12 lg:w-[80%] gap-4 m-auto max-w-[1200px]">
             <Sidebar />
-            <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+            <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar pb-36">
                 <PageHeader pagename={"Post"} />
                 {post ? (
                     <>
@@ -90,7 +96,18 @@ export default function SinglePost() {
                                     {showOptions ? <OptionsModal post={post} /> : null}
                                 </div>
                             </div>
-                            <div className="py-2 text-slate-900 dark:text-slate-100 break-all mt-4">{post.content}</div>
+                            <div className="py-2 text-slate-900 dark:text-slate-100 break-all mt-4 mx-4">
+                                {post.content}
+                            </div>
+                            <div>
+                                {post.postImgUrl ? (
+                                    <img
+                                        src={post.postImgUrl}
+                                        alt={post.imageAlt}
+                                        className="w-11/12 max-h-[450px] m-auto rounded-md"
+                                    />
+                                ) : null}
+                            </div>
                             <div className="pt-3 flex justify-between mt-4">
                                 <div className="flex items-center">
                                     {foundInLiked ? (
@@ -174,7 +191,7 @@ export default function SinglePost() {
                 )}
             </div>
             <BottomBar />
-            <UserPersonal />
+            <Suggestions />
         </div>
     );
 }
