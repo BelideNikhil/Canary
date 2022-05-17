@@ -12,7 +12,7 @@ export default function BottomBar() {
 
     return (
         <>
-            <div className="fixed left-0 bottom-0 w-full flex justify-between items-center bg-slate-200 dark:bg-slate-900  shadow-inner px-4 md:hidden">
+            <div className="fixed left-0 z-[8] bottom-0 w-full flex justify-between items-center bg-slate-200 dark:bg-slate-900  shadow-inner px-4 md:hidden">
                 <NavLink
                     to="/"
                     className={` ${(isActive) => (isActive ? "active" : "")}
