@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Loading, PostCard, UserPersonal, BottomBar, Sidebar, PageHeader } from "../../Components";
+import { Loading, PostCard, Suggestions, BottomBar, Sidebar, PageHeader } from "../../Components";
 import { allPosts, getPagedPosts } from "../../features/Post/Utils";
 import { setPageNum } from "../../features/Post/postSlice";
 import { useLastObserver } from "../../Hooks/useLastObserver";
@@ -58,7 +58,7 @@ export default function Explore() {
                 )}
             </div>
             <BottomBar />
-            <UserPersonal />
+            <Suggestions />
         </div>
     );
 }
