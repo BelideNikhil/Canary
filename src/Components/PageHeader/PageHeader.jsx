@@ -1,6 +1,7 @@
+import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toggleTheme } from "../../features/User/userSlice";
+import { toggleTheme, setSearchText } from "../../features/User/userSlice";
 import { Search } from "../index";
 
 export default function PageHeader({ pagename }) {
@@ -8,10 +9,23 @@ export default function PageHeader({ pagename }) {
     const navigate = useNavigate();
     const { darkTheme } = useSelector((state) => state.user);
     const { pathname } = useLocation();
+    const searchRef = useRef(null);
+
+    useEffect(() => {
+        const checkIfClickedOutside = (e) => {
+            if (searchRef.current && !searchRef.current.contains(e.target)) {
+                dispatch(setSearchText(""));
+            }
+        };
+        document.addEventListener("mousedown", checkIfClickedOutside);
+        return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside);
+        };
+    }, [searchRef, dispatch]);
 
     return (
-        <div className="flex z-9 p-3 sticky top-0 bg-slate-200 dark:bg-gray-900 border-b border-slate-500 flex flex-col">
-            <div className="flex justify-between items-center mb-4 lg:mb-0">
+        <div className="flex z-10 p-3 sticky top-0 bg-slate-200 dark:bg-gray-900 border-b border-slate-500 flex flex-col">
+            <div className="flex justify-between items-center mb-4 ">
                 <div className="flex">
                     {pathname.includes("post") || pathname.includes("profile") ? (
                         <button
@@ -44,7 +58,7 @@ export default function PageHeader({ pagename }) {
                     <span className="material-icons-outlined">{darkTheme ? "dark_mode" : "light_mode"}</span>
                 </button>
             </div>
-            <div className="block lg:hidden">
+            <div ref={searchRef}>
                 <Search />
             </div>
         </div>
