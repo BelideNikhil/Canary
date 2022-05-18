@@ -97,7 +97,7 @@ export const posts = [
                     username: "Pablo_Sells",
                     fullName: "Pablo Escobar",
                     profileUrl:
-                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652280230/Canary/pablo_esc_tpvmi8.jpg",
+                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652869915/Canary/Pablo_Escobar_Mug_fi6gr1.jpg",
                 },
             ],
             dislikedBy: [],
@@ -180,7 +180,7 @@ export const posts = [
                     username: "Pablo_Sells",
                     fullName: "Pablo Escobar",
                     profileUrl:
-                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652280230/Canary/pablo_esc_tpvmi8.jpg",
+                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652869915/Canary/Pablo_Escobar_Mug_fi6gr1.jpg",
                 },
             ],
             dislikedBy: [],
@@ -227,7 +227,7 @@ export const posts = [
                     username: "Pablo_Sells",
                     fullName: "Pablo Escobar",
                     profileUrl:
-                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652280230/Canary/pablo_esc_tpvmi8.jpg",
+                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652869915/Canary/Pablo_Escobar_Mug_fi6gr1.jpg",
                 },
             ],
             dislikedBy: [],
@@ -294,7 +294,7 @@ export const posts = [
                     username: "Pablo_Sells",
                     fullName: "Pablo Escobar",
                     profileUrl:
-                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652280230/Canary/pablo_esc_tpvmi8.jpg",
+                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652869915/Canary/Pablo_Escobar_Mug_fi6gr1.jpg",
                 },
             ],
             dislikedBy: [],
@@ -340,7 +340,7 @@ export const posts = [
                     username: "Pablo_Sells",
                     fullName: "Pablo Escobar",
                     profileUrl:
-                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652280230/Canary/pablo_esc_tpvmi8.jpg",
+                        "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652869915/Canary/Pablo_Escobar_Mug_fi6gr1.jpg",
                 },
             ],
             dislikedBy: [],
