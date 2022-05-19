@@ -24,11 +24,12 @@ export default function Search() {
                         placeholder="Search User..."
                         type="search"
                         onChange={debounce((e) => dispatch(setSearchText(e.target.value.trim())))}
+                        onFocus={debounce((e) => dispatch(setSearchText(e.target.value.trim())))}
                     />
                 </form>
             </div>
             {searchText ? (
-                <div className="absolute top-10 border-2 left-1/2 -translate-x-1/2 border-slate-700 dark:border-slate-300 bg-slate-200 dark:bg-slate-700 rounded-md w-80 lg:w-full shadow-2xl p-2">
+                <div className="absolute top-10 border-2 left-1/2 -translate-x-1/2 border-slate-700 dark:border-slate-300 bg-slate-200 dark:bg-slate-700 rounded-md w-80 w-11/12 m-auto max-w-xl shadow-2xl p-2">
                     {filteredUsers?.length > 0 ? (
                         filteredUsers.map((user) => {
                             return (

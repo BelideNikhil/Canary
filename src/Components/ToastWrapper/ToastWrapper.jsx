@@ -15,6 +15,13 @@ export default function ToastWrapper() {
                 error: {
                     duration: 2000,
                 },
+                loading: {
+                    duration: 2000,
+                    style: {
+                        background: "rgb(100 116 139)",
+                        color: "rgb(248 250 252)",
+                    },
+                },
             }}
         />
     );

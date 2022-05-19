@@ -29,7 +29,7 @@ export default function UserProfile() {
     const sortedPosts = SortBy(filteredPosts, "Latest");
 
     return (
-        <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar">
+        <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar pb-36">
             <PageHeader pagename={currentUserDetails?.username} />
             <div className="px-5 xl:px-2 py-5 border-b-2 border-slate-300 bg-gray-200 dark:bg-slate-900">
                 <div className="flex flex-col xl:flex-row  justify-between">

@@ -141,7 +141,7 @@ export const users = [
         fullName: "Pablo Escobar",
         bio: "I make and sell drugs!",
         website: "https://escobarinc.com/",
-        profileUrl: "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652280230/Canary/pablo_esc_tpvmi8.jpg",
+        profileUrl: "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652869915/Canary/Pablo_Escobar_Mug_fi6gr1.jpg",
         followers: [],
         following: [],
     },

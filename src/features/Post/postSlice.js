@@ -10,6 +10,7 @@ import {
     addComment,
     editComment,
     deleteComment,
+    getPagedPosts,
 } from "./Utils";
 
 const extraReducers = {
@@ -20,6 +21,7 @@ const extraReducers = {
         state.isLoading = false;
         state.error = "";
         state.posts = payload;
+        state.totalPages = Math.ceil(payload.length / 4);
     },
     [allPosts.rejected]: (state, { payload }) => {
         state.isLoading = false;
@@ -33,7 +35,6 @@ const extraReducers = {
     [newPost.rejected]: (state, { payload }) => {
         state.error = payload;
     },
-
     [editPost.fulfilled]: (state, { payload }) => {
         state.error = "";
         state.posts = payload;
@@ -96,6 +97,13 @@ const extraReducers = {
     [deleteComment.rejected]: (state, { payload }) => {
         state.error = payload;
     },
+    [getPagedPosts.pending]: (state) => {
+        state.isLoading = true;
+    },
+    [getPagedPosts.fulfilled]: (state, { payload }) => {
+        state.pagedPosts = payload;
+        state.isLoading = false;
+    },
 };
 
 export const postSlice = createSlice({
@@ -106,6 +114,9 @@ export const postSlice = createSlice({
         error: "",
         singlePost: null,
         selectedFilter: "Latest",
+        pageNum: 0,
+        totalPages: 0,
+        pagedPosts: [],
     },
     reducers: {
         cleanSinglePost: (state) => {
@@ -114,10 +125,13 @@ export const postSlice = createSlice({
         setSelectedFilter: (state, { payload }) => {
             state.selectedFilter = payload;
         },
+        setPageNum: (state) => {
+            state.pageNum = state.pageNum + 1 > state.totalPages ? state.totalPages : state.pageNum + 1;
+        },
     },
     extraReducers,
 });
 
-export const { cleanSinglePost, setSelectedFilter } = postSlice.actions;
+export const { cleanSinglePost, setSelectedFilter, setPageNum, setLoading } = postSlice.actions;
 
 export default postSlice.reducer;

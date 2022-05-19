@@ -3,30 +3,21 @@ import { useClickOustide } from "../../../Hooks/useClickOutside";
 import { updateUser } from "../Utils";
 import { setLoading } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { UploadImage } from "../../../Utils";
 
 export default function EditProfileModal({ setProfileModal, userDetails }) {
     const [userData, setUserData] = useState(userDetails);
     const [newProfileUrl, setProfileUrl] = useState("");
     const profileModalRef = useRef(null);
     const dispatch = useDispatch();
-    const cloudinaryUrl = "https://api.cloudinary.com/v1_1/dtelw4yz8/image/upload";
     const { token } = useSelector((state) => state.auth);
 
     async function formSubmitHandler(e) {
         e.preventDefault();
         if (newProfileUrl) {
             dispatch(setLoading());
-            const file = newProfileUrl;
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", "canary");
-            formData.append("folder", "Canary");
-            fetch(cloudinaryUrl, {
-                method: "POST",
-                body: formData,
-            })
-                .then((response) => response.json())
-                .then((data) => dispatch(updateUser({ token, userData: { ...userData, profileUrl: data.url } })));
+            const imgUrl = await UploadImage({ file: newProfileUrl });
+            dispatch(updateUser({ token, userData: { ...userData, profileUrl: imgUrl } }));
         } else {
             dispatch(updateUser({ token, userData }));
         }

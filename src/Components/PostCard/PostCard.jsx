@@ -29,8 +29,8 @@ export default function PostCard({ post }) {
 
     const { likeCount, likedBy } = post?.likes;
     const foundInLiked = likedBy?.find((item) => item.username === username);
-
     const foundInBookmarks = bookmarks?.find((bookmark) => bookmark === post._id);
+
     return (
         <>
             <div
@@ -59,7 +59,16 @@ export default function PostCard({ post }) {
                         {showOptions ? <OptionsModal post={post} /> : null}
                     </div>
                 </div>
-                <div className="py-2 text-slate-900 dark:text-slate-100 break-all mt-4">{post.content}</div>
+                <div className="py-2 text-slate-900 dark:text-slate-100 break-all mt-4 mx-4">{post.content}</div>
+                <div>
+                    {post.postImgUrl ? (
+                        <img
+                            src={post.postImgUrl}
+                            alt={post.imageAlt}
+                            className="w-11/12 max-h-[450px] m-auto rounded-md"
+                        />
+                    ) : null}
+                </div>
                 <div className="pt-3 flex justify-between mt-4">
                     <div className="flex items-center">
                         {foundInLiked ? (
