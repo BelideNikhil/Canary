@@ -73,6 +73,7 @@
 ### Made Using
 
 + React for front-end
++ Redux Toolkit for State Management
 + Mockbee as backend for Data management and Authentication
 + Google Icons for Icons
 + Tailwind CSS for Styling
