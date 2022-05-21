@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { likePost, dislikePost } from "../../features/Post/Utils";
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { useNavigate } from "react-router-dom";
-import { GetPostDate } from "../../Utils";
+import { GetPostDate, SharePost } from "../../Utils";
 
 export default function PostCard({ post }) {
     const [showOptions, setShowOptions] = useState(false);
@@ -133,6 +133,15 @@ export default function PostCard({ post }) {
                             <span className="material-icons-outlined hover:text-primary-color">bookmark_border</span>
                         </button>
                     )}
+                    <button
+                        className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300 "
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            SharePost(post.id);
+                        }}
+                    >
+                        <span className="material-icons-outlined hover:text-primary-color">share</span>
+                    </button>
                 </div>
             </div>
             {showCommentModal ? (

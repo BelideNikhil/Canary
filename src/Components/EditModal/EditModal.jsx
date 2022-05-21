@@ -28,7 +28,11 @@ export default function EditModal({ setShowModal, post }) {
                     dispatch(
                         editPost({
                             token,
-                            postData: { ...content, postImgUrl: response.url, imageAlt: response.original_filename },
+                            postData: {
+                                ...content,
+                                postImgUrl: response.url,
+                                imageAlt: response.original_filename,
+                            },
                         })
                     );
                     toast.success("Post Updated!", { id: toastId });
@@ -36,7 +40,17 @@ export default function EditModal({ setShowModal, post }) {
                     dispatch(editPost({ token, postData: content }));
                 }
             } else {
-                dispatch(newPost({ token, postData: content }));
+                const response = await UploadImage({ file: content.postImgUrl });
+                dispatch(
+                    newPost({
+                        token,
+                        postData: {
+                            ...content,
+                            postImgUrl: response.url,
+                            imageAlt: response.original_filename,
+                        },
+                    })
+                );
             }
         }
         setContent({ content: "", postImgUrl: "" });

@@ -12,7 +12,7 @@ export const followUser = createAsyncThunk("/user/followUser", async ({ followUs
             }
         );
         if (status === 200) {
-            toast.success(`Now Following ${data.followUser.username}`);
+            toast.success(`You are now Following ${data.followUser.username}`);
             return data;
         }
     } catch (error) {

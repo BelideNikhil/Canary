@@ -11,14 +11,14 @@ import {
     SingleComment,
     LikedBy,
     Suggestions,
-} from "../index";
+} from "../../Components";
 import { useClickOustide } from "../../Hooks/useClickOutside";
 import { likePost, dislikePost, addComment, getPost } from "../../features/Post/Utils";
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { cleanSinglePost } from "../../features/Post/postSlice";
-import { GetPostDate, SortBy } from "../../Utils";
+import { GetPostDate, SharePost, SortBy } from "../../Utils";
 
-export default function SinglePost() {
+export default function SinglePostPage() {
     const [showOptions, setShowOptions] = useState(false);
     const [comment, setComment] = useState("");
     const { postId } = useParams();
@@ -29,7 +29,7 @@ export default function SinglePost() {
     const optionsRef = useRef(null);
 
     const {
-        post: { singlePost: post, posts },
+        post: { singlePost: post, posts, isLoading },
         user: { users },
         auth: {
             token,
@@ -67,7 +67,11 @@ export default function SinglePost() {
             <Sidebar />
             <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar pb-36">
                 <PageHeader pagename={"Post"} />
-                {post ? (
+                {isLoading ? (
+                    <div className="flex justify-center items-center">
+                        <Loading />
+                    </div>
+                ) : post?.content ? (
                     <>
                         <div
                             className="border-b border-slate-400 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
@@ -154,6 +158,12 @@ export default function SinglePost() {
                                         <span className="material-icons-outlined">bookmark_border</span>
                                     </button>
                                 )}
+                                <button
+                                    className=" mr-2 w-6 h-6 text-slate-600 dark:text-slate-300"
+                                    onClick={() => SharePost(post.id)}
+                                >
+                                    <span className="material-icons-outlined">share</span>
+                                </button>
                             </div>
                             <LikedBy post={post} />
                         </div>
@@ -185,8 +195,13 @@ export default function SinglePost() {
                         </div>
                     </>
                 ) : (
-                    <div className="flex justify-center items-center">
-                        <Loading />
+                    <div className="flex flex-col justify-center items-center mt-8">
+                        <div className="font-medium text-2xl mb-4 text-slate-800 dark:text-slate-100">
+                            Post Not Found
+                        </div>
+                        <button className="bg-primary-color w-max rounded-full px-8 py-1.5 my-2 text-slate-100 font-medium">
+                            Back to Home
+                        </button>
                     </div>
                 )}
             </div>

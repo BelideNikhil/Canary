@@ -24,7 +24,7 @@ export default function PageHeader({ pagename }) {
     }, [searchRef, dispatch]);
 
     return (
-        <div className="flex z-10 p-3 sticky top-0 bg-slate-200 dark:bg-gray-900 border-b border-slate-500 flex flex-col">
+        <div className="flex z-[9] p-3 sticky top-0 bg-slate-200 dark:bg-gray-900 border-b border-slate-500 flex flex-col">
             <div className="flex justify-between items-center mb-4 ">
                 <div className="flex">
                     {pathname.includes("post") || pathname.includes("profile") ? (

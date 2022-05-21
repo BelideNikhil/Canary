@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 export default function ToastWrapper() {
     return (
         <Toaster
-            position="bottom-center"
+            position="top-center"
             reverseOrder={false}
             toastOptions={{
                 success: {

@@ -16,7 +16,7 @@ export const unFollowUser = createAsyncThunk(
                 }
             );
             if (status === 200) {
-                toast.success(` ${data.followUser.username} unfollowed`);
+                toast.success(`You just unfollowed ${data.followUser.username}`);
                 return data;
             }
         } catch (error) {

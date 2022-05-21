@@ -1,11 +1,17 @@
 import { UserAvatar } from "../index";
+import { useRef } from "react";
+import { useClickOustide } from "../../Hooks/useClickOutside";
 
 export default function FollowListModal({ setFollowModal, followModal }) {
     const { list, title } = followModal;
+    const modalRef = useRef(null);
+
+    useClickOustide(modalRef, setFollowModal);
 
     return (
         <div className="fixed inset-0 bg-modal-background flex justify-center items-center z-20">
             <div
+                ref={modalRef}
                 className="rounded-md bg-slate-200 dark:bg-slate-700 h-max w-11/12 max-w-xs	md:max-w-md mt-6 p-4"
                 onClick={(e) => e.stopPropagation()}
             >
