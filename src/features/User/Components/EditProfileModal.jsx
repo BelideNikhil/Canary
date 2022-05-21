@@ -16,8 +16,13 @@ export default function EditProfileModal({ setProfileModal, userDetails }) {
         e.preventDefault();
         if (newProfileUrl) {
             dispatch(setLoading());
-            const imgUrl = await UploadImage({ file: newProfileUrl });
-            dispatch(updateUser({ token, userData: { ...userData, profileUrl: imgUrl } }));
+            const response = await UploadImage({ file: newProfileUrl });
+            dispatch(
+                updateUser({
+                    token,
+                    userData: { ...userData, profileUrl: response.url, imageAlt: response.original_filename },
+                })
+            );
         } else {
             dispatch(updateUser({ token, userData }));
         }
@@ -26,7 +31,7 @@ export default function EditProfileModal({ setProfileModal, userDetails }) {
     useClickOustide(profileModalRef, setProfileModal);
 
     return (
-        <div className="fixed inset-0 flex justify-center items-center bg-modal-background">
+        <div className="fixed inset-0 flex justify-center items-center bg-modal-background z-10">
             <div className="bg-slate-100 dark:bg-slate-800 w-11/12 max-w-lg rounded-md px-5 py-4" ref={profileModalRef}>
                 <form onSubmit={formSubmitHandler}>
                     <div className=" flex justify-center mb-3">
