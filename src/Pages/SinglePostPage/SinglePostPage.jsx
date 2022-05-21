@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
     Sidebar,
     BottomBar,
@@ -17,7 +17,6 @@ import { likePost, dislikePost, addComment, getPost } from "../../features/Post/
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { cleanSinglePost } from "../../features/Post/postSlice";
 import { GetPostDate, SharePost, SortBy } from "../../Utils";
-import { NotFound } from "../index";
 
 export default function SinglePostPage() {
     const [showOptions, setShowOptions] = useState(false);
