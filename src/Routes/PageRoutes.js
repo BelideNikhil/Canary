@@ -7,7 +7,7 @@ import Home from "../features/Post/Home";
 import User from "../features/User/User";
 import UserAuth from "../features/Auth/UserAuth";
 import Bookmarks from "../features/Bookmark/Bookmarks";
-import { SinglePost, Explore } from "../Components";
+import { NotFound, Explore, SinglePostPage } from "../Pages";
 
 export default function PageRoutes() {
     const { token } = useSelector((state) => state.auth);
@@ -18,7 +18,7 @@ export default function PageRoutes() {
                 <Route path="/profile/:username" element={<User />} />
                 <Route path="/bookmarks" element={<Bookmarks />} />
                 <Route path="/explore" element={<Explore />} />
-                <Route path="/post/:postId" element={<SinglePost />} />
+                <Route path="/post/:postId" element={<SinglePostPage />} />
             </Route>
 
             <Route path="/auth" element={<UserAuth />}>
@@ -34,7 +34,7 @@ export default function PageRoutes() {
                     </>
                 )}
             </Route>
-            <Route path="/*" element={<Navigate to="/" />} />
+            <Route path="/*" element={<NotFound />} />
         </Routes>
     );
 }
