@@ -8,11 +8,9 @@ import PostCard from "./PostCard/PostCard";
 import EditModal from "./EditModal/EditModal";
 import OptionsModal from "./OptionsModal/OptionsModal";
 import PageHeader from "./PageHeader/PageHeader";
-import SinglePost from "./SinglePost/SinglePost";
 import CommentModal from "./CommentModal/CommentModal";
 import CommentOptionsModal from "./CommentModal/CommentOptionsModal";
 import SingleComment from "./SingleComment/SingleComment";
-import Explore from "./Explore/Explore";
 import LikedBy from "./LikedBy/LikedBy";
 import ToastWrapper from "./ToastWrapper/ToastWrapper";
 import Search from "./Search/Search";
@@ -29,11 +27,9 @@ export {
     EditModal,
     OptionsModal,
     PageHeader,
-    SinglePost,
     CommentModal,
     CommentOptionsModal,
     SingleComment,
-    Explore,
     LikedBy,
     ToastWrapper,
     Search,

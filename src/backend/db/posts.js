@@ -30,8 +30,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "Spread love everywhere you go. Let no one ever come to you without leaving happier. -Mother Teresa",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -60,7 +59,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content: "At vero eos et accusamus et iusto odio dignissimos  sunt in culpa qui officia  repellat.",
+        content: "If life were predictable it would cease to be life, and be without flavor. -Eleanor Roosevelt",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -143,7 +142,7 @@ export const posts = [
     {
         _id: uuid(),
         content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+            "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking. -Steve Jobs",
         likes: {
             likeCount: 1,
             likedBy: [
@@ -243,7 +242,7 @@ export const posts = [
     {
         _id: uuid(),
         content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+            "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough. -Oprah Winfrey",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -256,8 +255,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "If I were a book, what title would I have?",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -270,8 +268,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "Are we living, or are we dying?",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -284,8 +281,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "The hospital where you were born is the only building you left without entering.",
         likes: {
             likeCount: 1,
             likedBy: [
@@ -310,7 +306,7 @@ export const posts = [
     {
         _id: uuid(),
         content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+            "Always be a friend who will lend a hand in trouble. It’s easy to be a good friend when everything is great.",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -323,8 +319,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "Butter is a food lotion.",
         likes: {
             likeCount: 2,
             likedBy: [
@@ -367,8 +362,7 @@ export const posts = [
     },
     {
         _id: uuid(),
-        content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+        content: "What would you do if you had to face your worst fear every day?",
         likes: {
             likeCount: 2,
             likedBy: [

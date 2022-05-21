@@ -5,5 +5,6 @@ import { GetPostDate } from "./GetPostDate";
 import { debounce } from "./Debounce";
 import { GetSearch } from "./GetSearch";
 import { UploadImage } from "./UploadImage";
+import { SharePost } from "./SharePost";
 
-export { FilterUserPosts, SortBy, SignupFormValidator, GetPostDate, debounce, GetSearch, UploadImage };
+export { FilterUserPosts, SortBy, SignupFormValidator, GetPostDate, debounce, GetSearch, UploadImage, SharePost };
