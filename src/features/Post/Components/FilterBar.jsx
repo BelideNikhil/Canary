@@ -35,6 +35,7 @@ export default function FilterBar() {
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     dispatch(setSelectedFilter("Trending"));
+                                    setFilterModal(false);
                                 }}
                             >
                                 <span className="mx-2 material-icons-outlined">trending_up</span> Trending
@@ -45,6 +46,7 @@ export default function FilterBar() {
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     dispatch(setSelectedFilter("Latest"));
+                                    setFilterModal(false);
                                 }}
                             >
                                 <span className=" mx-2 material-icons-outlined">arrow_upward</span>Latest
@@ -55,6 +57,7 @@ export default function FilterBar() {
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     dispatch(setSelectedFilter("Oldest"));
+                                    setFilterModal(false);
                                 }}
                             >
                                 <span className="mx-2 material-icons-outlined">arrow_downward</span>Oldest

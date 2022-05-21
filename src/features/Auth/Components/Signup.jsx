@@ -42,7 +42,7 @@ export default function Signup() {
         }
     }
     return (
-        <div className="max-w-lg border-slate-800  rounded-md border-2 shadow-black dark:border-slate-500  px-6 py-4">
+        <div className="w-full max-w-md place-self-center border-slate-800  rounded-md border-2 shadow-black dark:border-slate-500  px-6 py-4">
             <div className="mb-4 text-2xl font-medium text-center text-slate-700 dark:text-slate-100">Sign In</div>
             <form onSubmit={formSubmitHandler}>
                 <div className="mb-3">

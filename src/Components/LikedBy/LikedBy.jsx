@@ -5,7 +5,7 @@ export default function LikedBy({ post }) {
     const [showLikedModal, setLikedModal] = useState({ show: false, title: "", list: [] });
 
     return (
-        <div>
+        <div className="mt-4">
             {post?.likes?.likedBy.length > 0 ? (
                 <button
                     className="dark:text-primary-color text-sm font-medium hover:underline text-black"

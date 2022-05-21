@@ -7,8 +7,8 @@ export default function UserAuth() {
         auth: { isLoading },
     } = useSelector((state) => state);
     return (
-        <div className="grid grid-cols-2 min-h-screen w-11/12 m-auto">
-            <div className="place-self-center">
+        <div className="flex flex-col sm:grid  sm:grid-cols-2 min-h-screen w-11/12 m-auto">
+            <div className="place-self-center w-40 sm:w-64 lg:w-96 xl:w-full mb-8 sm:mb-0">
                 <img src="/Canary.png" alt="Canary" />
             </div>
             {isLoading ? (
@@ -16,9 +16,7 @@ export default function UserAuth() {
                     <Loading />
                 </div>
             ) : (
-                <div className="place-self-center w-9/12 m-auto">
-                    <Outlet />
-                </div>
+                <Outlet />
             )}
         </div>
     );
