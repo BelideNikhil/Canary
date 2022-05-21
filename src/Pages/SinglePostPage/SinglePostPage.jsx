@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import {
     Sidebar,
     BottomBar,
@@ -17,6 +17,7 @@ import { likePost, dislikePost, addComment, getPost } from "../../features/Post/
 import { addToBookmark, removeFromBookmark } from "../../features/Bookmark/Utils";
 import { cleanSinglePost } from "../../features/Post/postSlice";
 import { GetPostDate, SharePost, SortBy } from "../../Utils";
+import { NotFound } from "../index";
 
 export default function SinglePostPage() {
     const [showOptions, setShowOptions] = useState(false);
@@ -29,7 +30,7 @@ export default function SinglePostPage() {
     const optionsRef = useRef(null);
 
     const {
-        post: { singlePost: post, posts },
+        post: { singlePost: post, posts, isLoading },
         user: { users },
         auth: {
             token,
@@ -67,7 +68,11 @@ export default function SinglePostPage() {
             <Sidebar />
             <div className="md:border-x border-slate-500 h-screen  overflow-y-auto no-scrollbar pb-36">
                 <PageHeader pagename={"Post"} />
-                {post ? (
+                {isLoading ? (
+                    <div className="flex justify-center items-center">
+                        <Loading />
+                    </div>
+                ) : post?.content ? (
                     <>
                         <div
                             className="border-b border-slate-400 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
@@ -191,8 +196,13 @@ export default function SinglePostPage() {
                         </div>
                     </>
                 ) : (
-                    <div className="flex justify-center items-center">
-                        <Loading />
+                    <div className="flex flex-col justify-center items-center mt-8">
+                        <div className="font-medium text-2xl mb-4 text-slate-800 dark:text-slate-100">
+                            Post Not Found
+                        </div>
+                        <button className="bg-primary-color w-max rounded-full px-8 py-1.5 my-2 text-slate-100 font-medium">
+                            Back to Home
+                        </button>
                     </div>
                 )}
             </div>
