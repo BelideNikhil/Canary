@@ -199,7 +199,10 @@ export default function SinglePostPage() {
                         <div className="font-medium text-2xl mb-4 text-slate-800 dark:text-slate-100">
                             Post Not Found
                         </div>
-                        <button className="bg-primary-color w-max rounded-full px-8 py-1.5 my-2 text-slate-100 font-medium">
+                        <button
+                            className="bg-primary-color w-max rounded-full px-8 py-1.5 my-2 text-slate-100 font-medium"
+                            onClick={() => navigate("/")}
+                        >
                             Back to Home
                         </button>
                     </div>
