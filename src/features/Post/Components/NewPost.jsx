@@ -40,7 +40,6 @@ export default function NewPost() {
                     ref={contentRef}
                     contentEditable
                     role="textbox"
-                    placeholder=""
                     onInput={(e) => setData((prev) => ({ ...prev, content: e.target.textContent }))}
                     className="outline-none empty:before:content-['Happening....'] py-4 mx-4 empty:before:text-slate-400 before:text-sm text-slate-900 dark:text-slate-100"
                 />
@@ -65,6 +64,7 @@ export default function NewPost() {
                         <input
                             type="file"
                             className="hidden"
+                            accept="image/*"
                             onInput={(e) => setData((prev) => ({ ...prev, postImgUrl: e.target.files[0] }))}
                         />
                         <span className="material-icons-outlined text-slate-800 dark:text-slate-100 ">image</span>
