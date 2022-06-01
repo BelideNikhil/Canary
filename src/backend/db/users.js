@@ -9,11 +9,11 @@ export const users = [
     // user one
     {
         _id: uuid(),
-        username: "Adarsh_Balika",
+        username: "_bhaaratii",
         password: "Password@123",
         createdAt: formatDate(),
         updatedAt: formatDate(),
-        fullName: "Adarsh Balika",
+        fullName: "Bharati",
         bio: "Mai hu neog ka Inspiration!",
         website: "https://adarshbalika.netlify.app/",
         profileUrl: "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652278882/Canary/user_two_kwishu.png",

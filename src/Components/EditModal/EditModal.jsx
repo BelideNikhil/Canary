@@ -112,6 +112,7 @@ export default function EditModal({ setShowModal, post }) {
                         <label className="w-6 h-6">
                             <input
                                 type="file"
+                                accept="image/*"
                                 className="hidden"
                                 onInput={(e) => setContent((prev) => ({ ...prev, postImgUrl: e.target.files[0] }))}
                             />

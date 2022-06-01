@@ -54,6 +54,7 @@ export default function EditProfileModal({ setProfileModal, userDetails }) {
                                 <input
                                     type="file"
                                     className="hidden"
+                                    accept="image/*"
                                     onChange={(e) => setProfileUrl(e.target.files[0])}
                                 />
                             </label>

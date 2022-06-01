@@ -10,7 +10,7 @@ export const posts = [
     {
         _id: uuid(),
         content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+            "It’s good to have money and the things that money can buy, but it’s good, too, to check up once in a while and make sure that you haven’t lost the things that money can’t buy.",
         likes: {
             likeCount: 0,
             likedBy: [],
@@ -73,14 +73,14 @@ export const posts = [
     {
         _id: uuid(),
         content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+            "Financial peace isn't the acquisition of stuff. It's learning to live on less than you make, so you can give money back and have money to invest. You can't win until you do this.",
         likes: {
             likeCount: 3,
             likedBy: [
                 {
                     _id: uuid(),
-                    username: "Adarsh_Balika",
-                    fullName: "Adarsh Balika",
+                    username: "_bhaaratii",
+                    fullName: "Bharati",
                     profileUrl:
                         "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652278882/Canary/user_two_kwishu.png",
                 },
@@ -133,7 +133,7 @@ export const posts = [
         createdAt: "2022-05-14",
         updatedAt: formatDate(),
         comments: [
-            { comment: "Ha chal chal, patha hai", _id: uuid(), username: "Adarsh_Balika", createdAt: "2022-05-14" },
+            { comment: "Ha chal chal, patha hai", _id: uuid(), username: "_bhaaratii", createdAt: "2022-05-14" },
             { comment: "Nice Explanation", _id: uuid(), username: "himadri2110", createdAt: "2022-05-14" },
         ],
         postImgUrl: "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652791119/Canary/pdffy8cl64ll2f8hbqjh.webp",
@@ -192,7 +192,7 @@ export const posts = [
             {
                 comment: "Don't do such things.",
                 _id: uuid(),
-                username: "Adarsh_Balika",
+                username: "_bhaaratii",
                 createdAt: "2021-12-03",
             },
         ],
@@ -203,14 +203,14 @@ export const posts = [
     {
         _id: uuid(),
         content:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+            "I love money. I love everything about it. I bought some pretty good stuff. Got me a $300 pair of socks. Got a fur sink. An electric dog polisher. A gasoline powered turtleneck sweater. And, of course, I bought some dumb stuff, too.",
         likes: {
             likeCount: 3,
             likedBy: [
                 {
                     _id: uuid(),
-                    username: "Adarsh_Balika",
-                    fullName: "Adarsh Balika",
+                    username: "_bhaaratii",
+                    fullName: "Bharati",
                     profileUrl:
                         "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652278882/Canary/user_two_kwishu.png",
                 },
@@ -261,7 +261,7 @@ export const posts = [
             likedBy: [],
             dislikedBy: [],
         },
-        username: "Adarsh_Balika",
+        username: "_bhaaratii",
         createdAt: formatDate(),
         updatedAt: formatDate(),
         comments: [],
@@ -299,7 +299,7 @@ export const posts = [
         createdAt: "2022-03-15",
         updatedAt: formatDate(),
         comments: [
-            { comment: "I am better than you!", _id: uuid(), username: "Adarsh_Balika", createdAt: "2022-03-15" },
+            { comment: "I am better than you!", _id: uuid(), username: "_bhaaratii", createdAt: "2022-03-15" },
             { comment: "Nice Explanation", _id: uuid(), username: "himadri2110", createdAt: "2022-04-15" },
         ],
     },
@@ -312,7 +312,7 @@ export const posts = [
             likedBy: [],
             dislikedBy: [],
         },
-        username: "Adarsh_Balika",
+        username: "_bhaaratii",
         createdAt: formatDate(),
         updatedAt: formatDate(),
         comments: [],
@@ -353,12 +353,12 @@ export const posts = [
             likedBy: [],
             dislikedBy: [],
         },
-        username: "Adarsh_Balika",
+        username: "_bhaaratii",
         createdAt: formatDate(),
         updatedAt: formatDate(),
         comments: [],
         postImgUrl: "https://i.pinimg.com/736x/37/d3/12/37d31294582078493774ab798ff943f9.jpg",
-        imageAlt: "Adarsh_Balika",
+        imageAlt: "_bhaaratii",
     },
     {
         _id: uuid(),
@@ -390,7 +390,7 @@ export const posts = [
             "https://res.cloudinary.com/dtelw4yz8/image/upload/v1652812832/Canary/hero-xpulse-200-modified-2021-price-3_ug9loc.jpg",
         imageAlt: "hero-xpulse-200",
         comments: [
-            { comment: "Where is Roadster?", _id: uuid(), username: "Adarsh_Balika", createdAt: "2022-05-14" },
+            { comment: "Where is Roadster?", _id: uuid(), username: "_bhaaratii", createdAt: "2022-05-14" },
             {
                 comment: "Where is my CyberTruck? U took my money and ran away Elon!",
                 _id: uuid(),

@@ -1,0 +1,3 @@
+-   Updated Posts and Users in backend
+-   Added attribute to Input type file
+-   Added Tagline on Login/ Signup page
