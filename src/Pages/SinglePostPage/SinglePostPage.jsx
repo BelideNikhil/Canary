@@ -74,7 +74,7 @@ export default function SinglePostPage() {
                 ) : post?.content ? (
                     <>
                         <div
-                            className="border-b border-slate-400 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
+                            className="border-b border-slate-400 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700"
                             ref={optionsRef}
                             onClick={() => navigate(`/post/${post.id}`)}
                         >
